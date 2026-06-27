@@ -25,6 +25,8 @@
     "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@rtorcato/js-tooling": "2.19.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^12.0.0",
     "@types/node": "^24.0.0",
     "husky": "^9.0.0",
