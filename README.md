@@ -26,13 +26,29 @@ yarn add @rtorcato/db-common
 
 ## Usage
 
-> **Planned API (lands in `0.2`).** No helpers ship yet — see [ROADMAP.md](./ROADMAP.md).
+Every helper returns a **plain shape** you feed to your own driver or query
+builder — `db-common` never generates SQL, so it stays driver-agnostic and
+zero-dependency.
 
 ```ts
-import { paginate } from '@rtorcato/db-common'
+import { paginate, orderBy, where, cursorPaginate } from '@rtorcato/db-common'
 
-const { limit, offset } = paginate({ page: 2, size: 25 })
+// Offset pagination — clamps junk query-string input to page/size ≥ 1.
+paginate({ page: 2, size: 25 })
 // → { limit: 25, offset: 25 }
+
+// Sort parsing — leading "-" means descending; accepts a string or array.
+orderBy('name,-createdAt')
+// → [{ col: 'name', dir: 'asc' }, { col: 'createdAt', dir: 'desc' }]
+
+// Filter normalization — bare values are `eq`, objects use operator keys.
+where({ status: 'active', age: { gte: 18 } })
+// → [{ col: 'status', op: 'eq', val: 'active' },
+//    { col: 'age', op: 'gte', val: 18 }]
+
+// Keyset (cursor) pagination — fetch limit+1 rows, then encodeCursor the last.
+cursorPaginate({ size: 20, column: 'id', after })
+// → { limit: 20, where: [{ col: 'id', op: 'gt', val: … }], order: [{ col: 'id', dir: 'asc' }] }
 ```
 
 The package is ESM-only and targets Node.js ≥22.

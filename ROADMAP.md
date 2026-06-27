@@ -10,12 +10,12 @@ Work is tracked in two GitHub milestones: **v0.2 — First helpers** and
 
 - [x] Project scaffold (TypeScript, tsup, Vitest, Biome, Husky, semantic-release)
 - [x] Documentation site (`apps/docs`, Docusaurus) + GitHub Pages deploy
-- [ ] `paginate` — page/offset helper (the one the README advertises)
-- [ ] Cursor-based pagination helper
-- [ ] `orderBy` builder (driver-agnostic)
-- [ ] `where`-clause builder (driver-agnostic)
+- [x] `paginate` — page/offset helper (the one the README advertises)
+- [x] Cursor-based pagination helper
+- [x] `orderBy` builder (driver-agnostic)
+- [x] `where`-clause builder (driver-agnostic)
 - [ ] Result mapping: row → typed object helpers
-- [ ] Full test coverage for each helper as it lands
+- [x] Full test coverage for each helper as it lands
 
 ## v1.0 — stable API
 
