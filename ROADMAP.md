@@ -3,16 +3,21 @@
 `db-common` is early. This is a rough plan, not a commitment — order and scope
 will shift as real usage informs the API.
 
-## 0.x — foundations
+Work is tracked in two GitHub milestones: **v0.2 — First helpers** and
+**v1.0 — Stable API**.
+
+## v0.2 — first helpers
 
 - [x] Project scaffold (TypeScript, tsup, Vitest, Biome, Husky, semantic-release)
 - [x] Documentation site (`apps/docs`, Docusaurus) + GitHub Pages deploy
-- [ ] First helpers: pagination (`paginate`, page/cursor)
-- [ ] Query shaping: `orderBy`, `where`-clause builders (driver-agnostic)
+- [ ] `paginate` — page/offset helper (the one the README advertises)
+- [ ] Cursor-based pagination helper
+- [ ] `orderBy` builder (driver-agnostic)
+- [ ] `where`-clause builder (driver-agnostic)
 - [ ] Result mapping: row → typed object helpers
 - [ ] Full test coverage for each helper as it lands
 
-## Toward 1.0
+## v1.0 — stable API
 
 - [ ] Stable, documented public API surface
 - [ ] Per-helper guides in the docs site
@@ -21,7 +26,6 @@ will shift as real usage informs the API.
 
 ## Ideas / maybe
 
-- Cursor-based pagination helpers
 - Lightweight migration-ordering utilities
 - Connection-pool config helpers (driver-agnostic shapes)
 

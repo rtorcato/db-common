@@ -26,6 +26,8 @@ yarn add @rtorcato/db-common
 
 ## Usage
 
+> **Planned API (lands in `0.2`).** No helpers ship yet — see [ROADMAP.md](./ROADMAP.md).
+
 ```ts
 import { paginate } from '@rtorcato/db-common'
 
