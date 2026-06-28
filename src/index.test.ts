@@ -1,5 +1,16 @@
 import { describe, expect, it } from 'vitest'
-import { cursorPaginate, decodeCursor, encodeCursor, orderBy, paginate, where } from './index.js'
+import {
+	allow,
+	cursorPaginate,
+	decodeCursor,
+	encodeCursor,
+	mapRow,
+	mapRows,
+	orderBy,
+	pageMeta,
+	paginate,
+	where,
+} from './index.js'
 
 describe('paginate', () => {
 	it('converts page/size to limit/offset', () => {
@@ -68,5 +79,61 @@ describe('cursor', () => {
 		expect(
 			cursorPaginate({ size: 20, column: 'id', dir: 'desc', after: encodeCursor(99) }).where
 		).toEqual([{ col: 'id', op: 'lt', val: 99 }])
+	})
+})
+
+describe('allow', () => {
+	it('drops conditions/sorts whose col is not allowlisted', () => {
+		expect(allow(where({ status: 'active', evil: 1 }), ['status'])).toEqual([
+			{ col: 'status', op: 'eq', val: 'active' },
+		])
+		expect(allow(orderBy('name,-secret'), ['name'])).toEqual([{ col: 'name', dir: 'asc' }])
+	})
+})
+
+describe('pageMeta', () => {
+	it('derives navigation metadata from a row count', () => {
+		expect(pageMeta({ total: 95, page: 2, size: 25 })).toEqual({
+			page: 2,
+			size: 25,
+			total: 95,
+			totalPages: 4,
+			hasNext: true,
+			hasPrev: true,
+		})
+	})
+
+	it('clamps junk and flags first/last page edges', () => {
+		expect(pageMeta({ total: 0, page: 0, size: 0 })).toEqual({
+			page: 1,
+			size: 1,
+			total: 0,
+			totalPages: 0,
+			hasNext: false,
+			hasPrev: false,
+		})
+		expect(pageMeta({ total: 10, page: 1, size: 10 })).toMatchObject({
+			totalPages: 1,
+			hasNext: false,
+			hasPrev: false,
+		})
+	})
+})
+
+describe('mapRow', () => {
+	it('renames columns and coerces where a cast is given, dropping the rest', () => {
+		expect(
+			mapRow(
+				{ user_id: 1, is_active: 1, secret: 'x' },
+				{
+					user_id: 'id',
+					is_active: ['active', Boolean],
+				}
+			)
+		).toEqual({ id: 1, active: true })
+	})
+
+	it('maps a result set', () => {
+		expect(mapRows([{ n: 'a' }, { n: 'b' }], { n: 'name' })).toEqual([{ name: 'a' }, { name: 'b' }])
 	})
 })

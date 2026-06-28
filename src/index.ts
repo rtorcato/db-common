@@ -14,3 +14,6 @@ export {
 	type Filter,
 	type FilterValue,
 } from './where.js'
+export { allow } from './allow.js'
+export { pageMeta, type PageMetaInput, type PageMeta } from './page-meta.js'
+export { mapRow, mapRows, type FieldSpec, type RowSpec } from './map-rows.js'

@@ -14,7 +14,9 @@ Work is tracked in two GitHub milestones: **v0.2 — First helpers** and
 - [x] Cursor-based pagination helper
 - [x] `orderBy` builder (driver-agnostic)
 - [x] `where`-clause builder (driver-agnostic)
-- [ ] Result mapping: row → typed object helpers
+- [x] Result mapping: `mapRow`/`mapRows` (row → typed object, rename + coerce)
+- [x] `allow` — column allowlist for `where`/`orderBy` (identifier-injection guard)
+- [x] `pageMeta` — page-count metadata for offset pagination
 - [x] Full test coverage for each helper as it lands
 
 ## v1.0 — stable API
