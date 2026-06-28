@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/rtorcato/db-common/compare/v1.0.0...v1.1.0) (2026-06-28)
+
+
+### Features
+
+* add allow, pageMeta, and mapRow/mapRows helpers ([3cefb97](https://github.com/rtorcato/db-common/commit/3cefb972a39db55436ad3ccfe8f24f4a63826ef0))
+
 # 1.0.0 (2026-06-28)
 
 
