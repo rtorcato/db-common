@@ -29,4 +29,16 @@ Work is tracked in two GitHub milestones: **v0.2 — First helpers** and
 - Lightweight migration-ordering utilities
 - Connection-pool config helpers (driver-agnostic shapes)
 
+### Driver-specific code lives in sibling packages, not here
+
+`db-common` stays driver-agnostic, SQL-free, and zero-dependency. Anything tied
+to a specific ORM/driver — Drizzle setup, SQL snippets, connection handling —
+belongs in a package that *depends on* `db-common`, e.g.:
+
+- `db-drizzle` — adapters that map db-common shapes (`where`, `orderBy`,
+  `paginate`) into Drizzle query fragments; Drizzle as a peer dep.
+- per-driver packages (`db-pg`, `db-sqlite`, …) for the same role.
+
+Build these only when a real app needs one — not speculatively.
+
 Have a use case? Open an issue: https://github.com/rtorcato/db-common/issues
