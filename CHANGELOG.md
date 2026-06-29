@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/rtorcato/db-common/compare/v1.1.0...v1.2.0) (2026-06-29)
+
+
+### Features
+
+* add db-drizzle package (Postgres adapters for db-common) ([#17](https://github.com/rtorcato/db-common/issues/17)) ([39a8f3c](https://github.com/rtorcato/db-common/commit/39a8f3ccb479c795a499ae5c9f1739142e66960d))
+
 # [1.1.0](https://github.com/rtorcato/db-common/compare/v1.0.0...v1.1.0) (2026-06-28)
 
 
