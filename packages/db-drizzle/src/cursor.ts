@@ -1,4 +1,4 @@
-import type { CursorQuery } from 'db-common'
+import type { CursorQuery } from '@rtorcato/db-common'
 import type { SQL } from 'drizzle-orm'
 import type { ColumnMap } from './columns.js'
 import { toDrizzleOrderBy } from './order-by.js'

@@ -1,5 +1,5 @@
 {
-  "name": "db-drizzle",
+  "name": "@rtorcato/db-drizzle",
   "version": "0.1.0",
   "description": "Drizzle ORM adapters for db-common shapes (Postgres).",
   "type": "module",
@@ -12,7 +12,7 @@
     "verify": "pnpm typecheck && pnpm test"
   },
   "dependencies": {
-    "db-common": "workspace:*"
+    "@rtorcato/db-common": "workspace:*"
   },
   "peerDependencies": {
     "drizzle-kit": "^0.28.0",

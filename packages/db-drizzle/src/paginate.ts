@@ -1,4 +1,4 @@
-import type { Page } from 'db-common'
+import type { Page } from '@rtorcato/db-common'
 
 /** Anything with Drizzle's chainable `.limit()`/`.offset()`. */
 interface Limitable {

@@ -7,14 +7,14 @@ into Drizzle query fragments. `db-common` stays driver-agnostic; this package is
 where Drizzle lives.
 
 ```bash
-pnpm add db-drizzle drizzle-orm        # + pg for ./connection, drizzle-kit for ./config
+pnpm add @rtorcato/db-drizzle drizzle-orm  # + pg for ./connection, drizzle-kit for ./config
 ```
 
 ## Adapters
 
 ```ts
-import { allow, orderBy, paginate, where } from 'db-common'
-import { toDrizzleOrderBy, toDrizzleWhere, withPage } from 'db-drizzle'
+import { allow, orderBy, paginate, where } from '@rtorcato/db-common'
+import { toDrizzleOrderBy, toDrizzleWhere, withPage } from '@rtorcato/db-drizzle'
 
 const cols = { status: users.status, age: users.age, name: users.name }
 
@@ -43,9 +43,9 @@ unknown names throw. Allowlist with db-common's `allow()` first.
 ## Postgres helpers (subpath exports)
 
 ```ts
-import { createDb } from 'db-drizzle/connection' // needs `pg`
-import { pgConfig } from 'db-drizzle/config'      // needs `drizzle-kit`
-import { id, timestamps } from 'db-drizzle'       // column conventions
+import { createDb } from '@rtorcato/db-drizzle/connection' // needs `pg`
+import { pgConfig } from '@rtorcato/db-drizzle/config'      // needs `drizzle-kit`
+import { id, timestamps } from '@rtorcato/db-drizzle'       // column conventions
 ```
 
 - `createDb(url | PoolConfig, schema?)` → `{ db, pool }` (node-postgres).

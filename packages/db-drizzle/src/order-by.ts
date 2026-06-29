@@ -1,4 +1,4 @@
-import type { Sort } from 'db-common'
+import type { Sort } from '@rtorcato/db-common'
 import { type SQL, asc, desc } from 'drizzle-orm'
 import { type ColumnMap, resolveColumn } from './columns.js'
 

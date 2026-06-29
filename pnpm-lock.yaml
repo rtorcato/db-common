@@ -96,7 +96,7 @@ importers:
 
   packages/db-drizzle:
     dependencies:
-      db-common:
+      '@rtorcato/db-common':
         specifier: workspace:*
         version: link:../..
     devDependencies:

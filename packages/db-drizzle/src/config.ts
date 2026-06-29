@@ -15,7 +15,7 @@ export interface PgConfigInput {
  * re-export from the app's `drizzle.config.ts`.
  *
  *   // drizzle.config.ts
- *   import { pgConfig } from 'db-drizzle/config'
+ *   import { pgConfig } from '@rtorcato/db-drizzle/config'
  *   export default pgConfig({ schema: './src/schema.ts', url: process.env.DATABASE_URL! })
  */
 export function pgConfig({ schema, url, out = './drizzle' }: PgConfigInput): Config {

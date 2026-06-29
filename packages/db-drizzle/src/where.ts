@@ -1,4 +1,4 @@
-import type { Condition, Operator } from 'db-common'
+import type { Condition, Operator } from '@rtorcato/db-common'
 import {
 	type Column,
 	type SQL,

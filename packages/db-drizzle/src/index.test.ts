@@ -1,4 +1,4 @@
-import { cursorPaginate, orderBy, paginate, where } from 'db-common'
+import { cursorPaginate, orderBy, paginate, where } from '@rtorcato/db-common'
 import type { SQL } from 'drizzle-orm'
 import { PgDialect, integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { describe, expect, it } from 'vitest'
