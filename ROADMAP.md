@@ -21,6 +21,9 @@ Work is tracked in two GitHub milestones: **v0.2 — First helpers** and
 
 ## v1.0 — stable API
 
+- [ ] `pick` — object → `INSERT { columns, values }` (#7)
+- [ ] `setClause` — object → `[{ col, val }]` for UPDATEs (#8)
+- [ ] `buildCursor` — last row + key columns → encoded cursor, composite-key ready (#9)
 - [ ] Stable, documented public API surface
 - [ ] Per-helper guides in the docs site
 - [ ] Published to npm as `@rtorcato/db-common`
