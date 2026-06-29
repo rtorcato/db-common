@@ -43,4 +43,24 @@ belongs in a package that *depends on* `db-common`, e.g.:
 
 Build these only when a real app needs one — not speculatively.
 
+#### `db-drizzle` — when and what (intent captured, not yet built)
+
+No app uses Drizzle yet, so there is nothing to deduplicate — DRY removes
+repetition that *exists*, it isn't build-ahead. Recording the target shape here so
+the first real app gets harvested instead of reinvented.
+
+- **Trigger:** spin up `rtorcato/db-drizzle` when a *second* app would copy-paste
+  the same Drizzle setup (rule of three / extract-on-second-use). Not before — the
+  first app builds its Drizzle setup in-app.
+- **Layout:** standalone repo, same shape as the other `*-common` packages,
+  scaffolded from `@rtorcato/js-tooling`, Drizzle as a **peer** dep.
+- **Intended contents** (target scope, not a commitment), in extraction order:
+  1. **Adapters** — map db-common shapes (`where`, `orderBy`, `paginate`,
+     `cursorPaginate`) into Drizzle query fragments. Pure functions, no connection.
+     This is the core value; extract first.
+  2. **`drizzle.config` / drizzle-kit + migration tooling glue.**
+  3. **Schema/column conventions** — id/timestamp/naming helpers.
+  4. **Connection/pool helpers** — most env-specific and likeliest to leak per-app
+     differences; extract last, and only what genuinely repeats.
+
 Have a use case? Open an issue: https://github.com/rtorcato/db-common/issues
