@@ -77,6 +77,31 @@ const config: Config = {
 
 	plugins: [
 		[
+			'docusaurus-plugin-typedoc',
+			{
+				// Single barrel: TypeDoc resolves the whole public API from index.ts.
+				entryPoints: ['../../src/index.ts'],
+				tsconfig: '../../tsconfig.json',
+				// The library typechecks on its own toolchain; skip TypeDoc's
+				// redundant semantic check against the docs workspace's pinned TS.
+				skipErrorChecking: true,
+				out: 'docs/api',
+				readme: 'none',
+				includeVersion: false,
+				excludePrivate: true,
+				excludeInternal: true,
+				excludeExternals: true,
+				sort: ['source-order'],
+				hidePageTitle: false,
+				hideBreadcrumbs: false,
+				sidebar: {
+					// Let Docusaurus autogenerate the API sidebar from docs/api
+					// (see sidebars.ts) rather than TypeDoc emitting a sidebar.cjs.
+					autoConfiguration: false,
+				},
+			},
+		],
+		[
 			'@easyops-cn/docusaurus-search-local',
 			{
 				hashed: true,
@@ -99,6 +124,7 @@ const config: Config = {
 			items: [
 				{ to: '/docs', position: 'left', label: 'Docs' },
 				{ to: '/docs/guides/installation', position: 'left', label: 'Guides' },
+				{ to: '/docs/api', position: 'left', label: 'API' },
 				{
 					type: 'dropdown',
 					label: 'Projects',
@@ -126,6 +152,7 @@ const config: Config = {
 						{ label: 'Overview', to: '/docs' },
 						{ label: 'Installation', to: '/docs/guides/installation' },
 						{ label: 'Usage', to: '/docs/guides/usage' },
+						{ label: 'API reference', to: '/docs/api' },
 						{ label: 'Changelog', to: '/docs/changelog' },
 					],
 				},
