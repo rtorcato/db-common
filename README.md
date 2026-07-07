@@ -12,7 +12,7 @@ the `@rtorcato/*` family: TypeScript-first, ESM-only, tree-shakeable, with zero
 runtime dependencies.
 
 > **Early days.** The public API is still small and may change before `1.0`.
-> See [ROADMAP.md](./ROADMAP.md).
+> See the [milestones](https://github.com/rtorcato/db-common/milestones) for what's planned.
 
 ## Installation
 
