@@ -30,6 +30,27 @@ export function decodeCursor(cursor: string): unknown {
 }
 
 /**
+ * Build the next `after` cursor from the last row of a page — the encode half of
+ * the keyset loop `cursorPaginate` starts. Pass a single key column for the
+ * scalar cursor `cursorPaginate` decodes today, or an array of key columns for a
+ * composite cursor (e.g. `[sortCol, id]`) that survives ties on a non-unique
+ * column.
+ *
+ *   buildCursor({ id: 42, name: 'Ada' }, 'id')            // → encodeCursor(42)
+ *   buildCursor({ createdAt: '2026-01-01', id: 42 }, ['createdAt', 'id'])
+ *   // → encodeCursor({ createdAt: '2026-01-01', id: 42 })
+ *
+ * ponytail: composite output is ready, but `cursorPaginate` still emits a
+ * single-column predicate — teach it to consume a composite cursor when you
+ * actually paginate on a non-unique column.
+ */
+export function buildCursor(row: Record<string, unknown>, keys: string | string[]): string {
+	const value =
+		typeof keys === 'string' ? row[keys] : Object.fromEntries(keys.map((k) => [k, row[k]]))
+	return encodeCursor(value)
+}
+
+/**
  * Build a driver-agnostic keyset (cursor) page: a `limit`, a `where` predicate
  * past the previous cursor, and an `order`. To detect a next page, fetch
  * `limit + 1` rows, trim the extra, and `encodeCursor` the last kept row's

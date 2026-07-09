@@ -118,11 +118,15 @@
 }
 .codePre {
 	margin: 0;
-	padding: 16px;
-	font: 500 12.5px / 1.8 var(--ifm-font-family-monospace);
-	color: var(--db-text);
-	overflow: auto;
 	background: transparent;
+	border-radius: 0;
+	box-shadow: none;
+}
+.codePre :global(pre) {
+	margin: 0;
+	padding: 16px;
+	background: transparent;
+	font: 500 12.5px / 1.8 var(--ifm-font-family-monospace);
 }
 
 /* Sections */
@@ -130,26 +134,6 @@
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 54px 24px 8px;
-}
-.sectionHead {
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
-	gap: 20px;
-	flex-wrap: wrap;
-	margin-bottom: 24px;
-}
-.h2 {
-	margin: 0 0 8px;
-	font-size: 30px;
-	letter-spacing: -0.02em;
-	font-weight: 800;
-	color: var(--db-heading);
-}
-.sub {
-	margin: 0;
-	font-size: 16px;
-	color: var(--db-muted);
 }
 
 /* Pillars */
@@ -192,57 +176,9 @@
 	color: var(--db-muted);
 }
 
-/* Sibling project cards — 3-up to match the three @rtorcato/* siblings. */
-.siblingGrid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 16px;
-}
-.card {
-	display: block;
-	padding: 22px;
-	background: var(--db-surface);
-	border: 1px solid var(--db-border);
-	border-radius: 16px;
-	/* biome-ignore lint/complexity/noImportantStyles: Docusaurus <Link> ships an underline we need to suppress on cards */
-	text-decoration: none !important;
-	color: inherit;
-	transition:
-		transform 0.15s,
-		border-color 0.15s;
-}
-.card:hover {
-	border-color: var(--db-accent-border);
-	transform: translateY(-3px);
-}
-.cardHead {
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	margin-bottom: 8px;
-}
-.cardName {
-	font-weight: 700;
-	font-size: 16px;
-	color: var(--db-heading);
-}
-.cardCount {
-	font-size: 12px;
-	color: var(--db-faint);
-}
-.cardDesc {
-	margin: 0;
-	font-size: 13px;
-	line-height: 1.5;
-	color: var(--db-muted);
-}
-
 /* ---------- Responsive ---------- */
 @media (max-width: 996px) {
 	.pillarGrid {
-		grid-template-columns: repeat(2, 1fr);
-	}
-	.siblingGrid {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
@@ -257,8 +193,7 @@
 	}
 }
 @media (max-width: 560px) {
-	.pillarGrid,
-	.siblingGrid {
+	.pillarGrid {
 		grid-template-columns: 1fr;
 	}
 }
