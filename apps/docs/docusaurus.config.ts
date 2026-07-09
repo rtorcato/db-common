@@ -1,6 +1,12 @@
 import type * as Preset from '@docusaurus/preset-classic'
 import type { Config } from '@docusaurus/types'
+import { GITHUB_PROFILE, copyright, projectFamilyItems } from '@rtorcato/shared-docs'
 import { themes as prismThemes } from 'prism-react-renderer'
+
+// The @rtorcato open-source family — sourced from @rtorcato/shared-docs so the
+// list lives in one place. Surfaced as a navbar "Projects" dropdown (Docusaurus
+// renders navbar items in the mobile menu too) and in the footer.
+const PROJECT_FAMILY = projectFamilyItems()
 
 const config: Config = {
 	title: 'db-common',
@@ -62,6 +68,31 @@ const config: Config = {
 
 	plugins: [
 		[
+			'docusaurus-plugin-typedoc',
+			{
+				// Single barrel: TypeDoc resolves the whole public API from index.ts.
+				entryPoints: ['../../src/index.ts'],
+				tsconfig: '../../tsconfig.json',
+				// The library typechecks on its own toolchain; skip TypeDoc's
+				// redundant semantic check against the docs workspace's pinned TS.
+				skipErrorChecking: true,
+				out: 'docs/api',
+				readme: 'none',
+				includeVersion: false,
+				excludePrivate: true,
+				excludeInternal: true,
+				excludeExternals: true,
+				sort: ['source-order'],
+				hidePageTitle: false,
+				hideBreadcrumbs: false,
+				sidebar: {
+					// Let Docusaurus autogenerate the API sidebar from docs/api
+					// (see sidebars.ts) rather than TypeDoc emitting a sidebar.cjs.
+					autoConfiguration: false,
+				},
+			},
+		],
+		[
 			'@easyops-cn/docusaurus-search-local',
 			{
 				hashed: true,
@@ -84,6 +115,13 @@ const config: Config = {
 			items: [
 				{ to: '/docs', position: 'left', label: 'Docs' },
 				{ to: '/docs/guides/installation', position: 'left', label: 'Guides' },
+				{ to: '/docs/api', position: 'left', label: 'API' },
+				{
+					type: 'dropdown',
+					label: 'Projects',
+					position: 'left',
+					items: [{ label: 'All on GitHub →', href: GITHUB_PROFILE }, ...PROJECT_FAMILY],
+				},
 				{
 					href: 'https://github.com/rtorcato/db-common',
 					label: 'GitHub',
@@ -105,6 +143,7 @@ const config: Config = {
 						{ label: 'Overview', to: '/docs' },
 						{ label: 'Installation', to: '/docs/guides/installation' },
 						{ label: 'Usage', to: '/docs/guides/usage' },
+						{ label: 'API reference', to: '/docs/api' },
 						{ label: 'Changelog', to: '/docs/changelog' },
 					],
 				},
@@ -117,12 +156,8 @@ const config: Config = {
 					],
 				},
 				{
-					title: 'Sibling projects',
-					items: [
-						{ label: 'js-common', href: 'https://rtorcato.github.io/js-common/' },
-						{ label: 'js-tooling', href: 'https://rtorcato.github.io/js-tooling/' },
-						{ label: 'browser-common', href: 'https://rtorcato.github.io/browser-common/' },
-					],
+					title: 'Projects',
+					items: PROJECT_FAMILY,
 				},
 				{
 					title: 'Community',
@@ -132,10 +167,11 @@ const config: Config = {
 							label: 'License (MIT)',
 							href: 'https://github.com/rtorcato/db-common/blob/main/LICENSE',
 						},
+						{ label: '@rtorcato', href: GITHUB_PROFILE },
 					],
 				},
 			],
-			copyright: `Copyright © ${new Date().getFullYear()} Richard Torcato. Built with Docusaurus.`,
+			copyright: copyright(),
 		},
 		prism: {
 			theme: prismThemes.vsDark,
