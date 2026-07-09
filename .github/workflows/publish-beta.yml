@@ -1,0 +1,60 @@
+name: Publish beta
+
+# Manual, on-demand publish to npm under the `beta` dist-tag. Kept separate from
+# the semantic-release pipeline on main so a normal merge never publishes to
+# `latest` while the API is still pre-1.0. Run from the Actions tab.
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Which package(s) to publish under @beta
+        type: choice
+        default: both
+        options:
+          - both
+          - '@rtorcato/db-common'
+          - '@rtorcato/db-drizzle'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: 📦 Install
+        run: pnpm install --frozen-lockfile
+
+      - name: 🏗️ Build packages
+        run: |
+          pnpm --filter @rtorcato/db-common build
+          pnpm --filter @rtorcato/db-drizzle build
+
+      # db-common first — db-drizzle depends on it (pnpm rewrites workspace:* to
+      # the real version on publish).
+      - name: 🚀 Publish @rtorcato/db-common@beta
+        if: ${{ inputs.package == 'both' || inputs.package == '@rtorcato/db-common' }}
+        run: pnpm --filter @rtorcato/db-common publish --tag beta --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 🚀 Publish @rtorcato/db-drizzle@beta
+        if: ${{ inputs.package == 'both' || inputs.package == '@rtorcato/db-drizzle' }}
+        run: pnpm --filter @rtorcato/db-drizzle publish --tag beta --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

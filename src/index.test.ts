@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
 	allow,
+	buildCursor,
 	cursorPaginate,
 	decodeCursor,
 	encodeCursor,
@@ -9,6 +10,8 @@ import {
 	orderBy,
 	pageMeta,
 	paginate,
+	pick,
+	setClause,
 	where,
 } from './index.js'
 
@@ -57,6 +60,27 @@ describe('where', () => {
 	})
 })
 
+describe('pick', () => {
+	it('builds parallel columns/values, dropping undefined and keeping null', () => {
+		expect(
+			pick({ name: 'Ada', email: undefined, active: null }, ['name', 'email', 'active'])
+		).toEqual({ columns: ['name', 'active'], values: ['Ada', null] })
+	})
+
+	it('only picks listed keys, in the order given', () => {
+		expect(pick({ a: 1, b: 2, c: 3 }, ['c', 'a'])).toEqual({ columns: ['c', 'a'], values: [3, 1] })
+	})
+})
+
+describe('setClause', () => {
+	it('maps an object to {col,val}, skipping undefined and keeping null', () => {
+		expect(setClause({ name: 'Ada', bio: undefined, active: null })).toEqual([
+			{ col: 'name', val: 'Ada' },
+			{ col: 'active', val: null },
+		])
+	})
+})
+
 describe('cursor', () => {
 	it('round-trips a cursor value', () => {
 		expect(decodeCursor(encodeCursor({ id: 42 }))).toEqual({ id: 42 })
@@ -79,6 +103,19 @@ describe('cursor', () => {
 		expect(
 			cursorPaginate({ size: 20, column: 'id', dir: 'desc', after: encodeCursor(99) }).where
 		).toEqual([{ col: 'id', op: 'lt', val: 99 }])
+	})
+
+	it('buildCursor encodes a single key as a scalar that closes the loop', () => {
+		const after = buildCursor({ id: 42, name: 'Ada' }, 'id')
+		expect(decodeCursor(after)).toBe(42)
+		expect(cursorPaginate({ size: 20, column: 'id', after }).where).toEqual([
+			{ col: 'id', op: 'gt', val: 42 },
+		])
+	})
+
+	it('buildCursor encodes multiple keys as a composite object', () => {
+		const after = buildCursor({ createdAt: '2026-01-01', id: 42, extra: 'x' }, ['createdAt', 'id'])
+		expect(decodeCursor(after)).toEqual({ createdAt: '2026-01-01', id: 42 })
 	})
 })
 

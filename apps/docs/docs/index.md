@@ -6,6 +6,12 @@ sidebar_position: 0
 
 # db-common
 
+[![CI](https://github.com/rtorcato/db-common/actions/workflows/ci.yml/badge.svg)](https://github.com/rtorcato/db-common/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@rtorcato/db-common.svg)](https://www.npmjs.com/package/@rtorcato/db-common)
+[![npm downloads](https://img.shields.io/npm/dm/@rtorcato/db-common.svg)](https://www.npmjs.com/package/@rtorcato/db-common)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/db-common)](https://bundlephobia.com/package/@rtorcato/db-common)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Shared, tree-shakeable TypeScript database utilities for the `@rtorcato/*` family.
 
 - **TypeScript-first** — strict types, generics preserved, JSDoc-rich in your IDE.
@@ -15,7 +21,7 @@ Shared, tree-shakeable TypeScript database utilities for the `@rtorcato/*` famil
 
 :::note Early days
 `db-common` is in active development — the public API is still small and may change
-before `1.0`. See the [roadmap](https://github.com/rtorcato/db-common/blob/main/ROADMAP.md)
+before `1.0`. See the [milestones](https://github.com/rtorcato/db-common/milestones)
 for what's planned.
 :::
 

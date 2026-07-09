@@ -1,3 +1,24 @@
+# [1.4.0](https://github.com/rtorcato/db-common/compare/v1.3.0...v1.4.0) (2026-07-09)
+
+
+### Features
+
+* add buildCursor to close the keyset loop ([#41](https://github.com/rtorcato/db-common/issues/41)) ([2bcd376](https://github.com/rtorcato/db-common/commit/2bcd376d3d4f35f34b46fbb83b3b82730bd9bd30)), closes [#9](https://github.com/rtorcato/db-common/issues/9)
+
+# [1.3.0](https://github.com/rtorcato/db-common/compare/v1.2.0...v1.3.0) (2026-07-09)
+
+
+### Features
+
+* add pick and setClause write-side helpers ([#40](https://github.com/rtorcato/db-common/issues/40)) ([b7a9e78](https://github.com/rtorcato/db-common/commit/b7a9e78d77609f77fc677223a7b7336c5da16c07)), closes [#7](https://github.com/rtorcato/db-common/issues/7) [#8](https://github.com/rtorcato/db-common/issues/8)
+
+# [1.2.0](https://github.com/rtorcato/db-common/compare/v1.1.0...v1.2.0) (2026-06-29)
+
+
+### Features
+
+* add db-drizzle package (Postgres adapters for db-common) ([#17](https://github.com/rtorcato/db-common/issues/17)) ([39a8f3c](https://github.com/rtorcato/db-common/commit/39a8f3ccb479c795a499ae5c9f1739142e66960d))
+
 # [1.1.0](https://github.com/rtorcato/db-common/compare/v1.0.0...v1.1.0) (2026-06-28)
 
 
