@@ -1,8 +1,9 @@
 import Link from '@docusaurus/Link'
+import InstallTabs from '@rtorcato/shared-docs/components/InstallTabs'
+import Siblings from '@rtorcato/shared-docs/components/Siblings'
 import Layout from '@theme/Layout'
 import clsx from 'clsx'
 import type { ReactElement } from 'react'
-import InstallTabs from '@site/src/components/InstallTabs'
 import styles from './index.module.css'
 
 /* ------------------------------------------------------------------ */
@@ -100,36 +101,6 @@ const PILLARS: Pillar[] = [
 	},
 ]
 
-type Sibling = {
-	name: string
-	tagline: string
-	href: string
-	dest: 'Docs' | 'GitHub'
-}
-
-const SIBLINGS: Sibling[] = [
-	{
-		name: '@rtorcato/js-common',
-		tagline: 'Tree-shakeable TypeScript utilities — tiny bundles, full type safety, CLI included.',
-		href: 'https://rtorcato.github.io/js-common/',
-		dest: 'Docs',
-	},
-	{
-		name: '@rtorcato/browser-common',
-		tagline:
-			'Tree-shakeable TypeScript wrappers around 40+ browser Web APIs — one subpath per spec.',
-		href: 'https://rtorcato.github.io/browser-common/',
-		dest: 'Docs',
-	},
-	{
-		name: '@rtorcato/js-tooling',
-		tagline:
-			'Shared Biome, TypeScript, Vitest and semantic-release presets that power the @rtorcato/* family.',
-		href: 'https://rtorcato.github.io/js-tooling/',
-		dest: 'Docs',
-	},
-]
-
 const HERO_CODE = `import { paginate } from '@rtorcato/db-common'
 
 const { limit, offset } = paginate({ page: 2, size: 25 })
@@ -208,32 +179,6 @@ function Pillars(): ReactElement {
 	)
 }
 
-function Siblings(): ReactElement {
-	return (
-		<section className={styles.section}>
-			<div className={styles.sectionHead}>
-				<div>
-					<h2 className={styles.h2}>Sibling projects</h2>
-					<p className={styles.sub}>
-						More from <code>@rtorcato</code> — same conventions, same release pipeline.
-					</p>
-				</div>
-			</div>
-			<div className={styles.siblingGrid}>
-				{SIBLINGS.map((s) => (
-					<Link key={s.name} href={s.href} className={styles.card}>
-						<div className={styles.cardHead}>
-							<div className={styles.cardName}>{s.name}</div>
-							<div className={styles.cardCount}>{s.dest} ↗</div>
-						</div>
-						<p className={styles.cardDesc}>{s.tagline}</p>
-					</Link>
-				))}
-			</div>
-		</section>
-	)
-}
-
 export default function Home(): ReactElement {
 	return (
 		<Layout
@@ -243,7 +188,7 @@ export default function Home(): ReactElement {
 			<main>
 				<Hero />
 				<Pillars />
-				<Siblings />
+				<Siblings self="@rtorcato/db-common" />
 			</main>
 		</Layout>
 	)
