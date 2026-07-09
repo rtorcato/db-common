@@ -6,6 +6,9 @@ build/
 # synced from root CHANGELOG.md on build
 docs/changelog.md
 
+# TypeDoc API reference — generated from src/index.ts on build
+docs/api/
+
 # dependencies
 node_modules/
 

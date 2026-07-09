@@ -18,7 +18,7 @@ const { limit, offset } = paginate({ page: 3, size: 20 })
 :::note Growing API
 The public surface is intentionally small while the library stabilises. New
 helpers are documented here as they land — track progress on the
-[roadmap](https://github.com/rtorcato/db-common/blob/main/ROADMAP.md).
+[milestones](https://github.com/rtorcato/db-common/milestones).
 :::
 
 ## Conventions

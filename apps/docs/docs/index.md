@@ -15,7 +15,7 @@ Shared, tree-shakeable TypeScript database utilities for the `@rtorcato/*` famil
 
 :::note Early days
 `db-common` is in active development — the public API is still small and may change
-before `1.0`. See the [roadmap](https://github.com/rtorcato/db-common/blob/main/ROADMAP.md)
+before `1.0`. See the [milestones](https://github.com/rtorcato/db-common/milestones)
 for what's planned.
 :::
 

@@ -4,6 +4,7 @@ export {
 	cursorPaginate,
 	encodeCursor,
 	decodeCursor,
+	buildCursor,
 	type CursorInput,
 	type CursorQuery,
 } from './cursor.js'
@@ -17,3 +18,5 @@ export {
 export { allow } from './allow.js'
 export { pageMeta, type PageMetaInput, type PageMeta } from './page-meta.js'
 export { mapRow, mapRows, type FieldSpec, type RowSpec } from './map-rows.js'
+export { pick, type InsertShape } from './pick.js'
+export { setClause, type Assignment } from './set-clause.js'
