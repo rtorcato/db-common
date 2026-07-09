@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@rtorcato/js-tooling": "2.19.1",
-    "@types/node": "^24.0.0",
+    "@types/node": "^26.1.1",
     "@types/pg": "^8.11.0",
     "drizzle-kit": "^0.31.10",
     "drizzle-orm": "^0.36.0",
