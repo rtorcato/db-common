@@ -1,0 +1,85 @@
+{
+  "name": "@rtorcato/db-drizzle",
+  "version": "0.1.0",
+  "description": "Drizzle ORM adapters for db-common shapes (Postgres).",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
+    "build": "tsup",
+    "verify": "pnpm typecheck && pnpm test"
+  },
+  "dependencies": {
+    "@rtorcato/db-common": "workspace:*"
+  },
+  "peerDependencies": {
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2",
+    "pg": "^8.13.0"
+  },
+  "peerDependenciesMeta": {
+    "drizzle-kit": {
+      "optional": true
+    },
+    "pg": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@rtorcato/js-tooling": "2.19.1",
+    "@types/node": "^26.1.1",
+    "@types/pg": "^8.11.0",
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2",
+    "pg": "^8.13.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.0"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./connection": {
+      "import": {
+        "types": "./dist/connection.d.ts",
+        "default": "./dist/connection.js"
+      },
+      "require": {
+        "types": "./dist/connection.d.cts",
+        "default": "./dist/connection.cjs"
+      }
+    },
+    "./config": {
+      "import": {
+        "types": "./dist/config.d.ts",
+        "default": "./dist/config.js"
+      },
+      "require": {
+        "types": "./dist/config.d.cts",
+        "default": "./dist/config.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
