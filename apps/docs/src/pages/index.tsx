@@ -1,6 +1,7 @@
 import Link from '@docusaurus/Link'
 import InstallTabs from '@rtorcato/shared-docs/components/InstallTabs'
 import Siblings from '@rtorcato/shared-docs/components/Siblings'
+import CodeBlock from '@theme/CodeBlock'
 import Layout from '@theme/Layout'
 import clsx from 'clsx'
 import type { ReactElement } from 'react'
@@ -156,7 +157,9 @@ function CodeWindow(): ReactElement {
 				<span className={styles.dot} style={{ background: '#28c840' }} />
 				<span className={styles.codeFile}>query.ts</span>
 			</div>
-			<pre className={styles.codePre}>{HERO_CODE}</pre>
+			<CodeBlock language="tsx" className={styles.codePre}>
+				{HERO_CODE}
+			</CodeBlock>
 		</div>
 	)
 }
