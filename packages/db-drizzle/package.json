@@ -15,7 +15,7 @@
     "@rtorcato/db-common": "workspace:*"
   },
   "peerDependencies": {
-    "drizzle-kit": "^0.28.0",
+    "drizzle-kit": "^0.31.10",
     "drizzle-orm": "^0.36.0",
     "pg": "^8.13.0"
   },
@@ -31,7 +31,7 @@
     "@rtorcato/js-tooling": "2.19.1",
     "@types/node": "^24.0.0",
     "@types/pg": "^8.11.0",
-    "drizzle-kit": "^0.28.0",
+    "drizzle-kit": "^0.31.10",
     "drizzle-orm": "^0.36.0",
     "pg": "^8.13.0",
     "tsup": "^8.0.0",
