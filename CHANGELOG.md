@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/rtorcato/db-common/compare/v1.2.0...v1.3.0) (2026-07-09)
+
+
+### Features
+
+* add pick and setClause write-side helpers ([#40](https://github.com/rtorcato/db-common/issues/40)) ([b7a9e78](https://github.com/rtorcato/db-common/commit/b7a9e78d77609f77fc677223a7b7336c5da16c07)), closes [#7](https://github.com/rtorcato/db-common/issues/7) [#8](https://github.com/rtorcato/db-common/issues/8)
+
 # [1.2.0](https://github.com/rtorcato/db-common/compare/v1.1.0...v1.2.0) (2026-06-29)
 
 

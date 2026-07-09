@@ -20,6 +20,7 @@
 		"@docusaurus/preset-classic": "^3.8.1",
 		"@easyops-cn/docusaurus-search-local": "^0.55.2",
 		"@mdx-js/react": "^3.1.0",
+		"@rtorcato/shared-docs": "github:rtorcato/shared-docs",
 		"clsx": "^2.1.1",
 		"prism-react-renderer": "^2.4.1",
 		"react": "^19.0.0",
