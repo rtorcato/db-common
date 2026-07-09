@@ -4,6 +4,7 @@ export {
 	cursorPaginate,
 	encodeCursor,
 	decodeCursor,
+	buildCursor,
 	type CursorInput,
 	type CursorQuery,
 } from './cursor.js'

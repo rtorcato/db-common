@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
 	allow,
+	buildCursor,
 	cursorPaginate,
 	decodeCursor,
 	encodeCursor,
@@ -102,6 +103,19 @@ describe('cursor', () => {
 		expect(
 			cursorPaginate({ size: 20, column: 'id', dir: 'desc', after: encodeCursor(99) }).where
 		).toEqual([{ col: 'id', op: 'lt', val: 99 }])
+	})
+
+	it('buildCursor encodes a single key as a scalar that closes the loop', () => {
+		const after = buildCursor({ id: 42, name: 'Ada' }, 'id')
+		expect(decodeCursor(after)).toBe(42)
+		expect(cursorPaginate({ size: 20, column: 'id', after }).where).toEqual([
+			{ col: 'id', op: 'gt', val: 42 },
+		])
+	})
+
+	it('buildCursor encodes multiple keys as a composite object', () => {
+		const after = buildCursor({ createdAt: '2026-01-01', id: 42, extra: 'x' }, ['createdAt', 'id'])
+		expect(decodeCursor(after)).toEqual({ createdAt: '2026-01-01', id: 42 })
 	})
 })
 
