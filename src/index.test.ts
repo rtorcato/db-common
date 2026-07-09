@@ -10,6 +10,8 @@ import {
 	orderBy,
 	pageMeta,
 	paginate,
+	pick,
+	setClause,
 	where,
 } from './index.js'
 
@@ -54,6 +56,27 @@ describe('where', () => {
 			{ col: 'age', op: 'gte', val: 18 },
 			{ col: 'age', op: 'lt', val: 65 },
 			{ col: 'deletedAt', op: 'eq', val: null },
+		])
+	})
+})
+
+describe('pick', () => {
+	it('builds parallel columns/values, dropping undefined and keeping null', () => {
+		expect(
+			pick({ name: 'Ada', email: undefined, active: null }, ['name', 'email', 'active'])
+		).toEqual({ columns: ['name', 'active'], values: ['Ada', null] })
+	})
+
+	it('only picks listed keys, in the order given', () => {
+		expect(pick({ a: 1, b: 2, c: 3 }, ['c', 'a'])).toEqual({ columns: ['c', 'a'], values: [3, 1] })
+	})
+})
+
+describe('setClause', () => {
+	it('maps an object to {col,val}, skipping undefined and keeping null', () => {
+		expect(setClause({ name: 'Ada', bio: undefined, active: null })).toEqual([
+			{ col: 'name', val: 'Ada' },
+			{ col: 'active', val: null },
 		])
 	})
 })
