@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/rtorcato/db-common/compare/v1.3.0...v1.4.0) (2026-07-09)
+
+
+### Features
+
+* add buildCursor to close the keyset loop ([#41](https://github.com/rtorcato/db-common/issues/41)) ([2bcd376](https://github.com/rtorcato/db-common/commit/2bcd376d3d4f35f34b46fbb83b3b82730bd9bd30)), closes [#9](https://github.com/rtorcato/db-common/issues/9)
+
 # [1.3.0](https://github.com/rtorcato/db-common/compare/v1.2.0...v1.3.0) (2026-07-09)
 
 
