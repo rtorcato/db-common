@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/rtorcato/db-common/compare/v1.4.0...v1.4.1) (2026-07-23)
+
+
+### Bug Fixes
+
+* **release:** upgrade npm for OIDC trusted publishing ([#60](https://github.com/rtorcato/db-common/issues/60)) ([d437887](https://github.com/rtorcato/db-common/commit/d4378879ae59b85787e33dbfd8b0f3d0a00097f4))
+
 # [1.4.0](https://github.com/rtorcato/db-common/compare/v1.3.0...v1.4.0) (2026-07-09)
 
 
