@@ -24,7 +24,7 @@
     "@biomejs/biome": "^2.5.3",
     "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^21.2.0",
-    "@rtorcato/js-tooling": "2.29.1",
+    "@rtorcato/js-tooling": "2.58.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^12.0.9",
