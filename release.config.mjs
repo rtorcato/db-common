@@ -1,4 +1,4 @@
-import preset from '@rtorcato/js-tooling/semantic-release/github'
+import preset from '@rtorcato/repo-tooling/semantic-release/github'
 
 // db-common is not published to npm yet (see ROADMAP v1.0). Keep the npm plugin
 // for version bumping but disable publishing, which also skips the NPM_TOKEN
