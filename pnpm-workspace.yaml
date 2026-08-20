@@ -7,4 +7,4 @@ allowBuilds:
   esbuild: true
 
 minimumReleaseAgeExclude:
-  - '@rtorcato/js-tooling@2.19.1'
+  - '@rtorcato/repo-tooling'

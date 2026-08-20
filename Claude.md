@@ -34,4 +34,4 @@ not interpolate values or emit query strings.
 - `pnpm test` / `pnpm build`
 
 Tooling (TS, tsup, Vitest, Biome, Husky, semantic-release) comes from
-`@rtorcato/js-tooling`. Commits are conventional (commitlint enforced).
+`@rtorcato/repo-tooling`. Commits are conventional (commitlint enforced).
