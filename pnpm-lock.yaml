@@ -66,8 +66,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.1(@types/react@19.2.17)(react@19.2.7)
       '@rtorcato/shared-docs':
-        specifier: github:rtorcato/shared-docs
-        version: https://codeload.github.com/rtorcato/shared-docs/tar.gz/3b9778f59b1a07055fab1f4e9cfa4a0446d48785(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        specifier: ^1.4.2
+        version: 1.5.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -2982,9 +2982,8 @@ packages:
       vitest:
         optional: true
 
-  '@rtorcato/shared-docs@https://codeload.github.com/rtorcato/shared-docs/tar.gz/3b9778f59b1a07055fab1f4e9cfa4a0446d48785':
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/rtorcato/shared-docs/tar.gz/3b9778f59b1a07055fab1f4e9cfa4a0446d48785}
-    version: 1.0.0
+  '@rtorcato/shared-docs@1.5.0':
+    resolution: {integrity: sha512-rQIeG+JMT3C39fQtvYJVAUoUr9w4prDAgtO8x4nSM2pqoHt/ut1v3fAa24TK16C0+/d0QpWVMsaF+z1XoqNxCA==}
     engines: {node: '>=22'}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
@@ -10007,7 +10006,7 @@ snapshots:
       '@docusaurus/utils-validation': 3.10.1(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.15))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.32.0)(postcss@8.5.15)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(supports-color@8.1.1)(uglify-js@3.19.3)
       '@types/react-router-config': 5.0.11
       combine-promises: 1.2.0
-      fs-extra: 11.3.6
+      fs-extra: 11.4.0
       js-yaml: 4.2.0
       lodash: 4.18.1
       react: 19.2.7
@@ -11782,7 +11781,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@rtorcato/shared-docs@https://codeload.github.com/rtorcato/shared-docs/tar.gz/3b9778f59b1a07055fab1f4e9cfa4a0446d48785(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@rtorcato/shared-docs@1.5.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
@@ -11860,7 +11859,7 @@ snapshots:
       aggregate-error: 5.0.0
       env-ci: 11.2.0
       execa: 9.6.1
-      fs-extra: 11.3.6
+      fs-extra: 11.4.0
       lodash-es: 4.18.1
       nerf-dart: 1.0.0
       normalize-url: 9.0.1
