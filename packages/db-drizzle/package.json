@@ -35,7 +35,7 @@
     "drizzle-orm": "^0.45.2",
     "pg": "^8.13.0",
     "tsup": "^8.0.0",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "vitest": "^4.0.0"
   },
   "main": "./dist/index.cjs",
