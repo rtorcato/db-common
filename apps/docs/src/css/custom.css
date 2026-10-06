@@ -178,6 +178,7 @@ body,
 /* ---------- Footer ---------- */
 .footer,
 .footer--dark {
+	margin-top: 4rem;
 	--ifm-footer-background-color: var(--db-bg2);
 	--ifm-footer-color: var(--db-text);
 	--ifm-footer-link-color: var(--db-text);
