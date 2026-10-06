@@ -21,16 +21,16 @@ importers:
         version: 21.2.0
       '@rtorcato/repo-tooling':
         specifier: ^5.5.2
-        version: 5.5.2(0af14da8ebd0940d777155b807b279f8)
+        version: 5.5.2(834b3f51ad85b27fc3c5e960703fd84c)
       '@semantic-release/changelog':
         specifier: ^6.0.3
-        version: 6.0.3(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))
+        version: 6.0.3(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
       '@semantic-release/git':
         specifier: ^10.0.1
-        version: 10.0.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+        version: 10.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
       '@semantic-release/github':
         specifier: ^12.0.9
-        version: 12.0.9(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+        version: 12.0.9(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
       '@types/node':
         specifier: ^26.1.1
         version: 26.1.1
@@ -41,8 +41,8 @@ importers:
         specifier: ^16.0.0
         version: 16.4.0
       semantic-release:
-        specifier: ^25.0.0
-        version: 25.0.5(supports-color@8.1.1)(typescript@7.0.2)
+        specifier: ^25.0.9
+        version: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
       tsup:
         specifier: ^8.0.0
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.16)(supports-color@8.1.1)(tsx@4.23.0)(yaml@2.9.0)
@@ -116,7 +116,7 @@ importers:
     devDependencies:
       '@rtorcato/repo-tooling':
         specifier: ^5.5.2
-        version: 5.5.2(37946ce9d7dee45f74d64f85d18c153c)
+        version: 5.5.2(db7f097fc74157444dfd4f901cffc2bc)
       '@types/node':
         specifier: ^26.1.1
         version: 26.1.1
@@ -7481,8 +7481,8 @@ packages:
     resolution: {integrity: sha512-ftnu3TW4+3eBfLRFnDEkzGxSF/10BJBkaLJuBHZX0kiPS7bRdlpZGu6YGt4KngMkdTwJE6MbjavFpqHvqVt+Ew==}
     engines: {node: '>=18'}
 
-  semantic-release@25.0.5:
-    resolution: {integrity: sha512-mn61SUJwtM8ThrWn2WmgLVpwVJeG/hPSupua1psdMoufmwRIPyvRLkRkL0JDXkP67OntlLWUYnBnfVc8EDO3/g==}
+  semantic-release@25.0.9:
+    resolution: {integrity: sha512-bxve7csK0/Txr++CkfrmV+X1r4jqiSOw2WsSad9E2S68R+ZfLBwDn8IceM8WfiOmKQIHgsQc1cNA8Dzg7U75pg==}
     engines: {node: ^22.14.0 || >= 24.10.0}
     hasBin: true
 
@@ -12696,7 +12696,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.62.2':
     optional: true
 
-  '@rtorcato/repo-tooling@5.5.2(0af14da8ebd0940d777155b807b279f8)':
+  '@rtorcato/repo-tooling@5.5.2(834b3f51ad85b27fc3c5e960703fd84c)':
     dependencies:
       chalk: 6.0.1
       commander: 15.0.0
@@ -12707,16 +12707,16 @@ snapshots:
       '@biomejs/biome': 2.5.3
       '@commitlint/cli': 20.5.3(@types/node@26.1.1)(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)(typescript@7.0.2)
       '@commitlint/config-conventional': 21.2.0
-      '@semantic-release/changelog': 6.0.3(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))
-      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
-      '@semantic-release/git': 10.0.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
-      '@semantic-release/github': 12.0.9(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
-      '@semantic-release/npm': 13.1.5(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))
-      '@semantic-release/release-notes-generator': 14.1.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/changelog': 6.0.3(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
+      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/git': 10.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/github': 12.0.9(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/npm': 13.1.5(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
+      '@semantic-release/release-notes-generator': 14.1.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
       conventional-changelog-conventionalcommits: 9.3.1
       esbuild: 0.27.7
       rollup: 4.62.2
-      semantic-release: 25.0.5(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
       tslib: 2.8.1
       tsup: 8.5.1(jiti@2.6.1)(postcss@8.5.16)(supports-color@8.1.1)(tsx@4.23.0)(yaml@2.9.0)
       typescript: 7.0.2
@@ -12724,7 +12724,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@rtorcato/repo-tooling@5.5.2(37946ce9d7dee45f74d64f85d18c153c)':
+  '@rtorcato/repo-tooling@5.5.2(db7f097fc74157444dfd4f901cffc2bc)':
     dependencies:
       chalk: 6.0.1
       commander: 15.0.0
@@ -12735,16 +12735,16 @@ snapshots:
       '@biomejs/biome': 2.5.3
       '@commitlint/cli': 20.5.3(@types/node@26.1.1)(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)(typescript@7.0.2)
       '@commitlint/config-conventional': 21.2.0
-      '@semantic-release/changelog': 6.0.3(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))
-      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
-      '@semantic-release/git': 10.0.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
-      '@semantic-release/github': 12.0.9(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
-      '@semantic-release/npm': 13.1.5(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))
-      '@semantic-release/release-notes-generator': 14.1.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/changelog': 6.0.3(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
+      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/git': 10.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/github': 12.0.9(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/npm': 13.1.5(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
+      '@semantic-release/release-notes-generator': 14.1.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
       conventional-changelog-conventionalcommits: 9.3.1
       esbuild: 0.28.1
       rollup: 4.62.2
-      semantic-release: 25.0.5(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
       tslib: 2.8.1
       tsup: 8.5.1(jiti@2.6.1)(postcss@8.5.16)(supports-color@8.1.1)(tsx@4.23.0)(yaml@2.9.0)
       typescript: 7.0.2
@@ -12759,15 +12759,15 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@semantic-release/changelog@6.0.3(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))':
+  '@semantic-release/changelog@6.0.3(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
       fs-extra: 11.3.5
       lodash: 4.18.1
-      semantic-release: 25.0.5(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
 
-  '@semantic-release/commit-analyzer@13.0.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
+  '@semantic-release/commit-analyzer@13.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
     dependencies:
       conventional-changelog-angular: 8.3.1
       conventional-changelog-writer: 8.4.0
@@ -12777,7 +12777,7 @@ snapshots:
       import-from-esm: 2.0.0(supports-color@8.1.1)
       lodash-es: 4.18.1
       micromatch: 4.0.8
-      semantic-release: 25.0.5(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -12785,7 +12785,7 @@ snapshots:
 
   '@semantic-release/error@4.0.0': {}
 
-  '@semantic-release/git@10.0.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
+  '@semantic-release/git@10.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
@@ -12795,11 +12795,11 @@ snapshots:
       lodash: 4.18.1
       micromatch: 4.0.8
       p-reduce: 2.1.0
-      semantic-release: 25.0.5(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/github@12.0.9(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
+  '@semantic-release/github@12.0.9(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
     dependencies:
       '@octokit/core': 7.0.6
       '@octokit/plugin-paginate-rest': 14.0.0(@octokit/core@7.0.6)
@@ -12815,7 +12815,7 @@ snapshots:
       lodash-es: 4.18.1
       mime: 4.1.0
       p-filter: 4.1.0
-      semantic-release: 25.0.5(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
       tinyglobby: 0.2.17
       undici: 7.28.0
       url-join: 5.0.0
@@ -12823,7 +12823,7 @@ snapshots:
       - kerberos
       - supports-color
 
-  '@semantic-release/npm@13.1.5(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))':
+  '@semantic-release/npm@13.1.5(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))':
     dependencies:
       '@actions/core': 3.0.1
       '@semantic-release/error': 4.0.0
@@ -12838,11 +12838,11 @@ snapshots:
       rc: 1.2.8
       read-pkg: 10.1.0
       registry-auth-token: 5.1.1
-      semantic-release: 25.0.5(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
       semver: 7.8.5
       tempy: 3.2.0
 
-  '@semantic-release/release-notes-generator@14.1.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
+  '@semantic-release/release-notes-generator@14.1.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
     dependencies:
       conventional-changelog-angular: 8.3.1
       conventional-changelog-writer: 8.4.0
@@ -12852,7 +12852,7 @@ snapshots:
       import-from-esm: 2.0.0(supports-color@8.1.1)
       lodash-es: 4.18.1
       read-package-up: 11.0.0
-      semantic-release: 25.0.5(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -17678,13 +17678,13 @@ snapshots:
       '@peculiar/x509': 1.14.3
       pkijs: 3.4.0
 
-  semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2):
+  semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2):
     dependencies:
-      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 12.0.9(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
-      '@semantic-release/npm': 13.1.5(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))
-      '@semantic-release/release-notes-generator': 14.1.1(semantic-release@25.0.5(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/github': 12.0.9(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/npm': 13.1.5(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
+      '@semantic-release/release-notes-generator': 14.1.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
       aggregate-error: 5.0.0
       cosmiconfig: 9.0.2(typescript@7.0.2)
       debug: 4.4.3(supports-color@8.1.1)
