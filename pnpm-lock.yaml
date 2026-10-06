@@ -90,8 +90,8 @@ importers:
         specifier: ^3.10.2
         version: 3.10.2
       '@docusaurus/types':
-        specifier: ^3.8.1
-        version: 3.10.1(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.16))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.32.0)(postcss@8.5.16)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(supports-color@8.1.1)(uglify-js@3.19.3)
+        specifier: ^3.10.2
+        version: 3.10.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.16))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.32.0)(postcss@8.5.16)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(supports-color@8.1.1)(uglify-js@3.19.3)
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.17
