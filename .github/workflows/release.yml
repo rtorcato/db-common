@@ -7,10 +7,12 @@ on:
   milestone:
     types: [closed]
 
-# A newer request supersedes an older one still waiting for approval (#753).
+# A newer request queues behind the current one and never cancels it: a run
+# already publishing could otherwise stop halfway (tag pushed, npm publish
+# missing). A queued request still supersedes an older queued one.
 concurrency:
   group: release
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   release:
