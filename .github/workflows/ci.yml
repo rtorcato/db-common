@@ -188,3 +188,48 @@ jobs:
             package.json
             README.md
           retention-days: 7
+
+  packages:
+    runs-on: ubuntu-latest
+    needs: [dependencies, check-skip]
+    if: needs.check-skip.outputs.should-skip != 'true'
+    steps:
+      - name: 📦 Checkout repository
+        uses: actions/checkout@v7
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: latest
+
+      - name: 📦 Restore dependencies cache
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+          key: ${{ needs.dependencies.outputs.cache-key }}
+
+      # The cache holds only root node_modules; install links packages/*/node_modules.
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Workspace packages import the root package through its dist/.
+      - name: 🏗️ Build root package
+        run: pnpm build
+
+      - name: 🧪 Typecheck + test workspace packages
+        run: pnpm --filter './packages/*' verify
+
+      - name: 🏗️ Build workspace packages
+        run: pnpm --filter './packages/*' build
+
+      - name: 💨 Smoke-import built entries
+        run: |
+          for f in dist/*.js packages/*/dist/*.js; do node -e "import('./$f')"; done
+          for f in dist/*.cjs packages/*/dist/*.cjs; do node -e "require('./$f')"; done
