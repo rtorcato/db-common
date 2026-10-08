@@ -59,15 +59,30 @@ export function buildCursor(row: Record<string, unknown>, keys: string | string[
  *   cursorPaginate({ size: 20, column: 'id', after })
  *   // → { limit: 20, where: [{ col:'id', op:'gt', val:<decoded> }], order:[…] }
  *
+ * `after` comes from the query string, so a junk cursor — one that doesn't
+ * decode, or decodes to anything but a string, number or boolean — is treated
+ * as no cursor and returns the first page. It never throws.
+ *
  * ponytail: single-column keyset — ties on a non-unique column can skip/repeat
  * rows. Upgrade to a composite (sortCol, id) cursor if you paginate on a
  * non-unique column.
  */
 export function cursorPaginate({ size, column, dir = 'asc', after }: CursorInput): CursorQuery {
 	const limit = Math.max(1, Math.floor(size) || 1)
+	const val = after === undefined ? undefined : safeDecode(after)
 	const where: Condition[] =
-		after === undefined
-			? []
-			: [{ col: column, op: dir === 'asc' ? 'gt' : 'lt', val: decodeCursor(after) }]
+		val === undefined ? [] : [{ col: column, op: dir === 'asc' ? 'gt' : 'lt', val }]
 	return { limit, where, order: [{ col: column, dir }] }
+}
+
+/** Decode a scalar cursor, or `undefined` for anything junk or non-scalar. */
+function safeDecode(cursor: string): string | number | boolean | undefined {
+	try {
+		const val = decodeCursor(cursor)
+		return ['string', 'number', 'boolean'].includes(typeof val)
+			? (val as string | number | boolean)
+			: undefined
+	} catch {
+		return undefined
+	}
 }

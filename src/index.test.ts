@@ -117,6 +117,28 @@ describe('cursor', () => {
 		const after = buildCursor({ createdAt: '2026-01-01', id: 42, extra: 'x' }, ['createdAt', 'id'])
 		expect(decodeCursor(after)).toEqual({ createdAt: '2026-01-01', id: 42 })
 	})
+
+	it('treats a junk or non-scalar cursor as the first page instead of throwing', () => {
+		for (const after of [
+			'garbage',
+			'',
+			'!!!',
+			encodeCursor({ id: 1 }),
+			encodeCursor([1, 2]),
+			encodeCursor(null),
+		]) {
+			expect(cursorPaginate({ size: 20, column: 'id', after }).where).toEqual([])
+		}
+	})
+
+	it('accepts string and boolean scalar cursors', () => {
+		expect(cursorPaginate({ size: 20, column: 'name', after: encodeCursor('Ada') }).where).toEqual([
+			{ col: 'name', op: 'gt', val: 'Ada' },
+		])
+		expect(cursorPaginate({ size: 20, column: 'ok', after: encodeCursor(false) }).where).toEqual([
+			{ col: 'ok', op: 'gt', val: false },
+		])
+	})
 })
 
 describe('allow', () => {
