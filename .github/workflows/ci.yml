@@ -147,6 +147,23 @@ jobs:
       - name: 🧪 Run tests
         run: pnpm test
 
+  # Branch protection requires a check named `test`; the matrix reports `test (Node N)`.
+  # A skipped required check counts as passing, so gate on the matrix result.
+  test-gate:
+    runs-on: ubuntu-latest
+    needs: [check-skip, test]
+    if: always()
+    name: test
+    steps:
+      - name: ✅ Require every test matrix leg to pass
+        env:
+          SHOULD_SKIP: ${{ needs.check-skip.outputs.should-skip }}
+          TEST_RESULT: ${{ needs.test.result }}
+        run: |
+          if [ "$SHOULD_SKIP" = "true" ] || [ "$TEST_RESULT" = "success" ]; then exit 0; fi
+          echo "test matrix result: $TEST_RESULT"
+          exit 1
+
   build:
     runs-on: ubuntu-latest
     needs: [dependencies, check-skip]
