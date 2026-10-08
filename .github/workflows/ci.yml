@@ -39,12 +39,10 @@ jobs:
       - name: 📦 Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: latest
 
       - name: 📦 Generate cache key
         id: cache-key
@@ -74,12 +72,10 @@ jobs:
       - name: 📦 Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: latest
 
       - name: 📦 Restore dependencies cache
         uses: actions/cache@v6
@@ -103,12 +99,10 @@ jobs:
       - name: 📦 Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: latest
 
       - name: 📦 Restore dependencies cache
         uses: actions/cache@v6
@@ -125,6 +119,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [dependencies, check-skip]
     if: needs.check-skip.outputs.should-skip != 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22', '24']
+    name: test (Node ${{ matrix.node }})
     steps:
       - name: 📦 Checkout repository
         uses: actions/checkout@v7
@@ -132,12 +131,10 @@ jobs:
       - name: 📦 Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: ${{ matrix.node }}
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: latest
 
       - name: 📦 Restore dependencies cache
         uses: actions/cache@v6
@@ -150,6 +147,23 @@ jobs:
       - name: 🧪 Run tests
         run: pnpm test
 
+  # Branch protection requires a check named `test`; the matrix reports `test (Node N)`.
+  # A skipped required check counts as passing, so gate on the matrix result.
+  test-gate:
+    runs-on: ubuntu-latest
+    needs: [check-skip, test]
+    if: always()
+    name: test
+    steps:
+      - name: ✅ Require every test matrix leg to pass
+        env:
+          SHOULD_SKIP: ${{ needs.check-skip.outputs.should-skip }}
+          TEST_RESULT: ${{ needs.test.result }}
+        run: |
+          if [ "$SHOULD_SKIP" = "true" ] || [ "$TEST_RESULT" = "success" ]; then exit 0; fi
+          echo "test matrix result: $TEST_RESULT"
+          exit 1
+
   build:
     runs-on: ubuntu-latest
     needs: [dependencies, check-skip]
@@ -161,12 +175,10 @@ jobs:
       - name: 📦 Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: latest
 
       - name: 📦 Restore dependencies cache
         uses: actions/cache@v6
@@ -200,12 +212,10 @@ jobs:
       - name: 📦 Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: latest
 
       - name: 📦 Restore dependencies cache
         uses: actions/cache@v6
