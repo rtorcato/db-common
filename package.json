@@ -16,6 +16,7 @@
     "coverage": "vitest run --coverage",
     "build": "tsup",
     "build:watch": "tsup --watch",
+    "prepublishOnly": "pnpm build",
     "prepare": "husky",
     "release": "semantic-release",
     "verify": "pnpm typecheck && pnpm check && pnpm exec vitest run"
