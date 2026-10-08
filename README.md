@@ -8,7 +8,7 @@
 
 > Shared, tree-shakeable TypeScript database utilities for the `@rtorcato/*` family.
 
-📖 **Docs:** https://rtorcato.github.io/db-common
+📖 **Docs:** https://docs.torcato.dev/db-common/
 
 ## Description
 

@@ -1,6 +1,8 @@
 {
   "name": "@rtorcato/db-common",
   "version": "1.4.1",
+  "packageManager": "pnpm@11.22.0",
+  "homepage": "https://docs.torcato.dev/db-common/",
   "description": "",
   "type": "module",
   "license": "MIT",
