@@ -20,8 +20,8 @@ importers:
         specifier: ^21.2.0
         version: 21.2.0
       '@rtorcato/repo-tooling':
-        specifier: ^5.5.2
-        version: 5.5.2(bf856b2b8b5048c5510f5900f01d9b9b)
+        specifier: ^6.0.0
+        version: 6.0.0(d553d98e77c37482137b939d909c9078)
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
@@ -115,8 +115,8 @@ importers:
         version: link:../..
     devDependencies:
       '@rtorcato/repo-tooling':
-        specifier: ^5.5.2
-        version: 5.5.2(6d5dfc58651013b12fa2063083d067a9)
+        specifier: ^6.0.0
+        version: 6.0.0(351724350c7bdaa8ff819f536790c436)
       '@types/node':
         specifier: ^26.1.1
         version: 26.1.1
@@ -968,10 +968,6 @@ packages:
         optional: true
       conventional-commits-parser:
         optional: true
-
-  '@conventional-changelog/template@1.2.1':
-    resolution: {integrity: sha512-TzlTVpKPjaqW6qOYjQcYUDuGsLCNsvFHVBXkYGTAnf5V37jCWrE5haKNXzz0WZUtVHjrpV76L1buANjwXMfT8w==}
-    engines: {node: '>=22'}
 
   '@conventional-changelog/template@1.4.0':
     resolution: {integrity: sha512-aalGyl7dbB5PArRebDIX43ZvBlXrYm9uWzGJ26t+4SzJVPsOuvfILGGbw5X4yX7i50YEmJ8zvbiWnqH/AAnZqg==}
@@ -2968,8 +2964,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rtorcato/repo-tooling@5.5.2':
-    resolution: {integrity: sha512-Ci1/5hkUhiJr44hIZF0humqRmfREW3HYcFOC5D6dERk9HxVeUywdzLixBfpM+U2nvItv7OILAc/Lc974IrSZIQ==}
+  '@rtorcato/repo-tooling@6.0.0':
+    resolution: {integrity: sha512-zReKrcSvdVof8yMvLv6kZH2pwm07zeiTLLZxlOXC0DOhTaPuU5jthOMtb3k3YZtONrCN2w2Y8gt34qURl9x83Q==}
     engines: {node: '>=22'}
     hasBin: true
     peerDependencies:
@@ -2988,13 +2984,13 @@ packages:
       '@semantic-release/github': ^12.0.10
       '@semantic-release/npm': ^13.0.0
       '@semantic-release/release-notes-generator': ^14.0.0
-      '@size-limit/preset-small-lib': ^12.0.0
+      '@size-limit/preset-small-lib': ^12.0.0 || ^13.0.0 || ^14.0.0
       '@total-typescript/ts-reset': ^0.6.0
       '@typescript-eslint/eslint-plugin': ^8.0.0
       '@typescript-eslint/parser': ^8.0.0
-      conventional-changelog-conventionalcommits: ^9.0.0
+      conventional-changelog-conventionalcommits: ^9.0.0 || ^10.0.0
       esbuild: ^0.25.0 || ^0.27.0 || ^0.28.0
-      esbuild-node-externals: ^1.0.0
+      esbuild-node-externals: ^1.0.0 || ^2.0.0
       eslint: '>=9.0.0'
       eslint-plugin-import: ^2.0.0
       eslint-plugin-jest: ^29.0.0
@@ -3002,7 +2998,7 @@ packages:
       prettier: ^3.0.0
       rollup: ^4.0.0
       semantic-release: ^25.0.0
-      size-limit: ^12.0.0
+      size-limit: ^12.0.0 || ^13.0.0 || ^14.0.0
       ts-jest: ^29.0.0
       tslib: ^2.0.0
       tsup: ^8.0.0
@@ -4178,10 +4174,6 @@ packages:
   conventional-changelog-conventionalcommits@10.2.1:
     resolution: {integrity: sha512-n4Kr1HFMTf3iMbES0TMxKIcYtUUv4rKqyQQp2JwfOEfFCOfGT3Tq4mCyJ8S9/YPyWhydjfKrrvnyl+gCjA+mJQ==}
     engines: {node: '>=22'}
-
-  conventional-changelog-conventionalcommits@9.3.1:
-    resolution: {integrity: sha512-dTYtpIacRpcZgrvBYvBfArMmK2xvIpv2TaxM0/ZI5CBtNUzvF2x0t15HsbRABWprS6UPmvj+PzHVjSx4qAVKyw==}
-    engines: {node: '>=18'}
 
   conventional-changelog-writer@8.4.0:
     resolution: {integrity: sha512-HHBFkk1EECxxmCi4CTu091iuDpQv5/OavuCUAuZmrkWpmYfyD816nom1CvtfXJ/uYfAAjavgHvXHX291tSLK8g==}
@@ -9531,8 +9523,6 @@ snapshots:
       '@simple-libs/stream-utils': 2.0.0
       verkit: 0.5.0
 
-  '@conventional-changelog/template@1.2.1': {}
-
   '@conventional-changelog/template@1.4.0': {}
 
   '@csstools/cascade-layer-name-parser@2.0.5(@csstools/css-parser-algorithms@3.0.5(@csstools/css-tokenizer@3.0.4))(@csstools/css-tokenizer@3.0.4)':
@@ -12343,7 +12333,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.62.2':
     optional: true
 
-  '@rtorcato/repo-tooling@5.5.2(6d5dfc58651013b12fa2063083d067a9)':
+  '@rtorcato/repo-tooling@6.0.0(351724350c7bdaa8ff819f536790c436)':
     dependencies:
       chalk: 6.0.1
       commander: 15.0.0
@@ -12361,7 +12351,7 @@ snapshots:
       '@semantic-release/github': 12.0.9(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
       '@semantic-release/npm': 13.1.5(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
       '@semantic-release/release-notes-generator': 14.1.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
-      conventional-changelog-conventionalcommits: 9.3.1
+      conventional-changelog-conventionalcommits: 10.2.1
       esbuild: 0.28.1
       rollup: 4.62.2
       semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
@@ -12372,7 +12362,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@rtorcato/repo-tooling@5.5.2(bf856b2b8b5048c5510f5900f01d9b9b)':
+  '@rtorcato/repo-tooling@6.0.0(d553d98e77c37482137b939d909c9078)':
     dependencies:
       chalk: 6.0.1
       commander: 15.0.0
@@ -12390,7 +12380,7 @@ snapshots:
       '@semantic-release/github': 12.0.9(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
       '@semantic-release/npm': 13.1.5(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
       '@semantic-release/release-notes-generator': 14.1.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
-      conventional-changelog-conventionalcommits: 9.3.1
+      conventional-changelog-conventionalcommits: 10.2.1
       esbuild: 0.27.7
       rollup: 4.62.2
       semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
@@ -13587,12 +13577,7 @@ snapshots:
 
   conventional-changelog-conventionalcommits@10.2.1:
     dependencies:
-      '@conventional-changelog/template': 1.2.1
-
-  conventional-changelog-conventionalcommits@9.3.1:
-    dependencies:
-      compare-func: 2.0.0
-    optional: true
+      '@conventional-changelog/template': 1.4.0
 
   conventional-changelog-writer@8.4.0:
     dependencies:
