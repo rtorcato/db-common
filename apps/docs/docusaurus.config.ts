@@ -13,7 +13,7 @@ const config: Config = {
 	tagline: 'Shared, tree-shakeable TypeScript database utilities for the @rtorcato/* family.',
 	favicon: 'img/logo.svg',
 
-	url: 'https://rtorcato.github.io',
+	url: 'https://docs.torcato.dev',
 	baseUrl: '/db-common/',
 
 	organizationName: 'rtorcato',
