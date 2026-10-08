@@ -1,7 +1,7 @@
 {
   "name": "@rtorcato/db-common",
   "version": "1.4.1",
-  "description": "",
+  "description": "Database-agnostic TypeScript helpers for pagination, query shaping, and result mapping.",
   "type": "module",
   "license": "MIT",
   "scripts": {
