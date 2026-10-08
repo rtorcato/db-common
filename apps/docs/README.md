@@ -1,6 +1,6 @@
 # db-common docs
 
-[Docusaurus](https://docusaurus.io/) site for [@rtorcato/db-common](https://www.npmjs.com/package/@rtorcato/db-common). Deployed to GitHub Pages at https://rtorcato.github.io/db-common via `.github/workflows/docs.yml`.
+[Docusaurus](https://docusaurus.io/) site for [@rtorcato/db-common](https://www.npmjs.com/package/@rtorcato/db-common). Deployed to Cloudflare at https://docs.torcato.dev/db-common/ via `.github/workflows/docs.yml`.
 
 ## Develop
 
