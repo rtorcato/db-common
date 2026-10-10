@@ -11,7 +11,7 @@ const PROJECT_FAMILY = projectFamilyItems()
 const config: Config = {
 	title: 'db-common',
 	tagline: 'Shared, tree-shakeable TypeScript database utilities for the @rtorcato/* family.',
-	favicon: 'img/logo.svg',
+	favicon: 'img/favicon.ico',
 
 	url: 'https://docs.torcato.dev',
 	baseUrl: '/db-common/',
@@ -106,6 +106,7 @@ const config: Config = {
 	],
 
 	themeConfig: {
+		image: 'img/social-card.png',
 		colorMode: {
 			defaultMode: 'dark',
 			respectPrefersColorScheme: true,
