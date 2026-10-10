@@ -7,10 +7,12 @@ on:
   milestone:
     types: [closed]
 
-# A newer request supersedes an older one still waiting for approval (#753).
+# A newer request queues behind the current one and never cancels it: a run
+# already publishing could otherwise stop halfway (tag pushed, npm publish
+# missing). A queued request still supersedes an older queued one.
 concurrency:
   group: release
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   release:
@@ -39,8 +41,6 @@ jobs:
 
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: latest
 
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
@@ -49,6 +49,10 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # `files` is ["dist"] and nothing else builds it before `npm publish`.
+      - name: 🏗️ Build
+        run: pnpm run build
 
       # OIDC trusted publishing needs npm CLI >= 11.5.1; the runner ships 10.x.
       - name: 📦 Upgrade npm for OIDC trusted publishing

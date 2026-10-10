@@ -1,6 +1,7 @@
 {
   "name": "@rtorcato/db-common",
   "version": "1.4.1",
+  "homepage": "https://docs.torcato.dev/db-common/",
   "description": "Database-agnostic TypeScript helpers for pagination, query shaping, and result mapping.",
   "repository": {
     "type": "git",
@@ -30,19 +31,18 @@
     "coverage": "vitest run --coverage",
     "build": "tsup",
     "build:watch": "tsup --watch",
+    "prepublishOnly": "pnpm build",
     "prepare": "husky",
     "release": "semantic-release",
     "verify": "pnpm typecheck && pnpm check && pnpm exec vitest run"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.3",
-    "@commitlint/cli": "^20.0.0",
-    "@commitlint/config-conventional": "^21.2.0",
-    "@rtorcato/repo-tooling": "^5.5.2",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^12.0.9",
-    "@types/node": "^26.1.1",
+    "@biomejs/biome": "^2.5.15",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@rtorcato/repo-tooling": "^6.0.0",
+    "@semantic-release/github": "^12.0.10",
+    "@types/node": "^26.6.4",
     "husky": "^9.0.0",
     "lint-staged": "^17.6.0",
     "semantic-release": "^25.0.9",
@@ -72,6 +72,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "packageManager": "pnpm@12.10.1",
   "engines": {
     "node": ">=22"
   },
