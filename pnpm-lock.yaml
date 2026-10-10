@@ -225,8 +225,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.1(@types/react@19.3.0)(react@19.3.0)
       '@rtorcato/shared-docs':
-        specifier: ^1.4.2
-        version: 1.5.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: ^1.13.1
+        version: 1.13.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -3150,12 +3150,18 @@ packages:
       vitest:
         optional: true
 
-  '@rtorcato/shared-docs@1.5.0':
-    resolution: {integrity: sha512-rQIeG+JMT3C39fQtvYJVAUoUr9w4prDAgtO8x4nSM2pqoHt/ut1v3fAa24TK16C0+/d0QpWVMsaF+z1XoqNxCA==}
+  '@rtorcato/shared-docs@1.13.1':
+    resolution: {integrity: sha512-XqkOYSncTTRJDfVBqZAkK1s7tT4x7wsFrp9jOmePOjwsGpaketWlsFTPQShvGTppw4ZhPm9pJ43ooVD6W1UgSw==}
     engines: {node: '>=22'}
+    hasBin: true
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
@@ -11970,8 +11976,8 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@rtorcato/shared-docs@1.5.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
-    dependencies:
+  '@rtorcato/shared-docs@1.13.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+    optionalDependencies:
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
 
@@ -12916,7 +12922,7 @@ snapshots:
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.29.3
-      caniuse-lite: 1.0.30001799
+      caniuse-lite: 1.0.30001815
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
