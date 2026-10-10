@@ -21,11 +21,10 @@
 
 `db-common` is a collection of small, focused, database-agnostic helpers —
 pagination, query shaping, result mapping — built the same way as the rest of
-the `@rtorcato/*` family: TypeScript-first, ESM-only, tree-shakeable, with zero
-runtime dependencies.
+the `@rtorcato/*` family: TypeScript-first, tree-shakeable, with zero
+runtime dependencies. Ships as ESM and CommonJS for broad compatibility.
 
-> **Early days.** The public API is still small and may change before `1.0`.
-> See the [milestones](https://github.com/rtorcato/db-common/milestones) for what's planned.
+> See the [milestones](https://github.com/rtorcato/db-common/milestones) for what's planned next.
 
 ## Installation
 
@@ -64,7 +63,7 @@ cursorPaginate({ size: 20, column: 'id', after })
 // → { limit: 20, where: [{ col: 'id', op: 'gt', val: … }], order: [{ col: 'id', dir: 'asc' }] }
 ```
 
-The package is ESM-only and targets Node.js ≥22.
+The package targets Node.js ≥22 and ships as both ESM and CommonJS.
 
 ## Development
 
