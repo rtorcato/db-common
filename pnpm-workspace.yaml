@@ -8,3 +8,11 @@ allowBuilds:
 
 minimumReleaseAgeExclude:
   - '@rtorcato/repo-tooling'
+
+# Security (#81): Docusaurus 3.10 pins these a major behind their fixes.
+# Drop once @docusaurus/core ships tinypool >=2.1.2 and its webpack plugins
+# ship serialize-javascript >=7.0.3.
+overrides:
+  '@docusaurus/core>tinypool': ^2.1.2
+  'copy-webpack-plugin>serialize-javascript': ^7.0.3
+  'css-minimizer-webpack-plugin>serialize-javascript': ^7.0.3
