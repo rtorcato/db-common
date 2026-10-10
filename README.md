@@ -1,3 +1,10 @@
+<!-- brand-kit:banner:start -->
+<picture>
+  <source media="(max-width: 640px)" srcset="./brand/banner-mobile.png">
+  <img src="./brand/banner.png" alt="db-common banner" width="1600">
+</picture>
+<!-- brand-kit:banner:end -->
+
 # db-common
 
 [![CI](https://github.com/rtorcato/db-common/actions/workflows/ci.yml/badge.svg)](https://github.com/rtorcato/db-common/actions/workflows/ci.yml)
