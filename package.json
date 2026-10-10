@@ -2,7 +2,21 @@
   "name": "@rtorcato/db-common",
   "version": "1.4.1",
   "homepage": "https://docs.torcato.dev/db-common/",
-  "description": "",
+  "description": "Database-agnostic TypeScript helpers for pagination, query shaping, and result mapping.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rtorcato/db-common.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rtorcato/db-common/issues"
+  },
+  "keywords": [
+    "database",
+    "pagination",
+    "query",
+    "typescript",
+    "utilities"
+  ],
   "type": "module",
   "license": "MIT",
   "scripts": {
@@ -39,6 +53,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
       "import": {
