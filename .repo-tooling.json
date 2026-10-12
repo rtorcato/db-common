@@ -1,29 +1,42 @@
 {
-  "$schema": "https://rtorcato.github.io/repo-tooling/schemas/lockfile.json",
-  "version": 1,
-  "config": {
-    "linting": {
-      "tool": "biome"
+  "$schema": "https://docs.torcato.dev/repo-tooling/schemas/lockfile.json",
+  "version": 4,
+  "record": {
+    "config": {
+      "language": "js",
+      "linting": {
+        "tool": "biome"
+      },
+      "formatting": {
+        "tool": "biome"
+      },
+      "testing": {
+        "framework": "vitest",
+        "environment": "node"
+      },
+      "gitHooks": true,
+      "commitLint": true,
+      "semanticRelease": true,
+      "securityAutomation": true,
+      "projectName": "db-common",
+      "projectType": "library",
+      "typescript": {
+        "enabled": true,
+        "config": "base"
+      },
+      "bundler": "tsup"
     },
-    "formatting": {
-      "tool": "biome"
-    },
-    "testing": {
-      "framework": "vitest",
-      "environment": "node"
-    },
-    "gitHooks": true,
-    "commitLint": true,
-    "semanticRelease": true,
-    "securityAutomation": true,
-    "projectName": "db-common",
-    "projectType": "library",
-    "typescript": {
-      "enabled": true,
-      "config": "base"
-    },
-    "bundler": "tsup"
+    "writtenBy": "@rtorcato/repo-tooling@6.0.0",
+    "writtenAt": "2026-10-12T13:28:39.562Z"
   },
-  "writtenBy": "@rtorcato/js-tooling@2.19.0",
-  "writtenAt": "2026-06-27T18:41:50.042Z"
+  "rules": {
+    "mcp": {
+      "recommended": []
+    },
+    "exceptions": {},
+    "dependabot": {
+      "onPr": "label",
+      "label": "ai-review"
+    }
+  }
 }
