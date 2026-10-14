@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="db-common">
+  <!-- lucide database, ISC -->
+  <rect x=".5" y=".5" width="31" height="31" rx="8"
+        fill="#a78bfa" fill-opacity=".13" stroke="#a78bfa" stroke-opacity=".38"/>
+  <svg x="6.72" y="6.72" width="18.56" height="18.56" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+       stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+    <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
+    <path d="M3 12A9 3 0 0 0 21 12"/>
+  </svg>
+</svg>
