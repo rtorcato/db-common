@@ -1,11 +1,13 @@
-import { defineConfig } from 'vitest/config'
+import base from '@rtorcato/repo-tooling/vitest/config'
+import { defineConfig, mergeConfig } from 'vitest/config'
 
-export default defineConfig({
-	test: {
-		globals: true,
-		environment: 'node',
-		// Only src — don't scan compiled tests in any dist/ (incl. workspace packages).
-		include: ['src/**/*.test.ts'],
-		setupFiles: ['./vitest.setup.ts'],
-	},
-})
+export default mergeConfig(
+	base,
+	defineConfig({
+		test: {
+			// Only src — don't scan compiled tests in any dist/ (incl. workspace packages).
+			include: ['src/**/*.test.ts'],
+			setupFiles: ['./vitest.setup.ts'],
+		},
+	})
+)
