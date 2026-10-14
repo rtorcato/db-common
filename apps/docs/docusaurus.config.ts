@@ -11,7 +11,7 @@ const PROJECT_FAMILY = projectFamilyItems()
 const config: Config = {
 	title: 'db-common',
 	tagline: 'Shared, tree-shakeable TypeScript database utilities for the @rtorcato/* family.',
-	favicon: 'img/favicon.ico',
+	favicon: 'img/favicon.svg',
 
 	url: 'https://docs.torcato.dev',
 	baseUrl: '/db-common/',
@@ -113,6 +113,13 @@ const config: Config = {
 		},
 		navbar: {
 			title: 'db-common',
+			logo: {
+				alt: 'db-common',
+				src: 'img/logo.svg',
+				srcDark: 'img/logo-dark.svg',
+				width: 26,
+				height: 26,
+			},
 			items: [
 				{ to: '/docs', position: 'left', label: 'Docs' },
 				{ to: '/docs/guides/installation', position: 'left', label: 'Guides' },
