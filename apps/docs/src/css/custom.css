@@ -101,11 +101,6 @@
 .navbar__link--active {
 	color: var(--db-heading);
 }
-/* Family mark is drawn at 26px (DESIGN.md "Navbar standard"); Infima's 2rem would stretch the box. */
-.navbar__logo img {
-	width: 26px;
-	height: 26px;
-}
 
 /* ---------- Backgrounds ---------- */
 html,
