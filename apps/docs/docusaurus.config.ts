@@ -1,6 +1,6 @@
 import type * as Preset from '@docusaurus/preset-classic'
 import type { Config } from '@docusaurus/types'
-import { GITHUB_PROFILE, copyright, projectFamilyItems } from '@rtorcato/shared-docs'
+import { GITHUB_PROFILE, footerCopyright, projectFamilyItems } from '@rtorcato/shared-docs'
 import { themes as prismThemes } from 'prism-react-renderer'
 
 // The @rtorcato open-source family — sourced from @rtorcato/shared-docs so the
@@ -67,6 +67,9 @@ const config: Config = {
 	],
 
 	plugins: [
+		// `torcato.dev /` navbar breadcrumb + `← torcato.dev` drawer row. The footer
+		// row comes from footerCopyright() below.
+		'@rtorcato/shared-docs/docusaurus',
 		[
 			'docusaurus-plugin-typedoc',
 			{
@@ -179,7 +182,7 @@ const config: Config = {
 					],
 				},
 			],
-			copyright: copyright(),
+			copyright: footerCopyright(),
 		},
 		prism: {
 			theme: prismThemes.vsDark,
