@@ -12,6 +12,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@rtorcato/db-common.svg)](https://www.npmjs.com/package/@rtorcato/db-common)
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/db-common)](https://bundlephobia.com/package/@rtorcato/db-common)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/rtorcato)
 
 > Shared, tree-shakeable TypeScript database utilities for the `@rtorcato/*` family.
 
