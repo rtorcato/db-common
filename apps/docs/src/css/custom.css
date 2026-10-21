@@ -213,23 +213,23 @@ body,
 }
 
 /* ---------- Code ----------
-   Prism is vsDark in both light & dark mode (to match the navy aesthetic),
-   so fenced code blocks stay dark in BOTH themes. */
+   Prism is vsLight in light mode and vsDark in dark (docusaurus.config.ts), so
+   the surfaces come from the per-mode tokens. Dark values are unchanged. */
 .theme-code-block,
 div[class*="codeBlockContainer"],
 pre[class*="language-"] {
 	border: 1px solid var(--db-border);
 	border-radius: 12px;
-	background: #0c111b !important;
+	background: var(--db-code-bg) !important;
 }
 .theme-code-block code,
 pre[class*="language-"] code {
 	background: transparent !important;
-	color: #dfe5ee;
+	color: var(--db-text);
 }
 div[class*="codeBlockTitle"] {
-	background: #0a0e16 !important;
-	color: #94a1b4 !important;
+	background: var(--db-bg) !important;
+	color: var(--db-muted) !important;
 	border-bottom: 1px solid var(--db-border);
 }
 [data-theme="light"] .theme-code-block,
