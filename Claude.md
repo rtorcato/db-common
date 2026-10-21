@@ -27,10 +27,13 @@ not interpolate values or emit query strings.
 - **Leave `null` and edge cases to the caller** — e.g. `where` passes `val: null`
   through for the caller to map to `IS NULL`.
 - Mark deliberate shortcuts with a `ponytail:` comment (see `where.ts`).
+- **Keep the AI skill current.** A PR that changes the public API also updates
+  `skills/db-common/SKILL.md` and runs `pnpm sync:agents` to regenerate
+  `AGENTS.md` (never edit it by hand; `pnpm verify` fails when it's stale).
 
 ## Commands
 
-- `pnpm verify` — typecheck + Biome check + tests (run before committing)
+- `pnpm verify` — AGENTS.md sync check + typecheck + Biome check + tests (run before committing)
 - `pnpm test` / `pnpm build`
 
 Tooling (TS, tsup, Vitest, Biome, Husky, semantic-release) comes from

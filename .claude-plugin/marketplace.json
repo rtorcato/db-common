@@ -1,0 +1,15 @@
+{
+  "name": "db-common",
+  "owner": {
+    "name": "Richard Torcato",
+    "email": "rtorcato@me.com"
+  },
+  "description": "Claude Code skill for @rtorcato/db-common — database-agnostic TypeScript helpers for pagination, query shaping, and result mapping.",
+  "plugins": [
+    {
+      "name": "db-common",
+      "source": "./",
+      "description": "Guidance for using @rtorcato/db-common: pagination, filter and sort shapes, write-side helpers, and the column-allowlist boundary."
+    }
+  ]
+}

@@ -66,6 +66,25 @@ cursorPaginate({ size: 20, column: 'id', after })
 
 The package targets Node.js ≥22 and ships as both ESM and CommonJS.
 
+## Use with AI
+
+A skill ships with the package so AI coding tools use db-common the way it's meant to be used.
+
+**Any agent with the [`skills`](https://www.npmjs.com/package/skills) CLI** — install it straight from GitHub, no clone, no package install:
+
+```bash
+npx skills add https://github.com/rtorcato/db-common --skill db-common
+```
+
+**[Claude Code](https://claude.com/claude-code)** — register the marketplace once, then install the plugin:
+
+```bash
+/plugin marketplace add rtorcato/db-common
+/plugin install db-common@db-common
+```
+
+**Other tools (Cursor, Copilot, Codex)** — the package ships an [`AGENTS.md`](AGENTS.md) with the same rules; agents that read `AGENTS.md` pick it up from `node_modules`, or copy the rules into your project's agent config.
+
 ## Development
 
 ```bash
@@ -99,7 +118,10 @@ pnpm --filter @rtorcato/db-common-docs build   # production build
 db-common/
 ├── src/                  # library source
 ├── apps/docs/            # Docusaurus documentation site
-├── scripts/              # build/maintenance scripts (changelog sync)
+├── scripts/              # build/maintenance scripts (changelog, AGENTS.md sync)
+├── skills/db-common/     # AI skill (SKILL.md, source of truth for AGENTS.md)
+├── .claude-plugin/       # Claude Code marketplace + plugin manifests
+├── AGENTS.md             # generated from SKILL.md by `pnpm sync:agents`
 ├── package.json
 ├── tsconfig.json
 ├── biome.jsonc
