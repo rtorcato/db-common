@@ -1,0 +1,13 @@
+{
+  "name": "db-common",
+  "description": "Guidance for using @rtorcato/db-common: pagination, filter and sort shapes, write-side helpers, and the column-allowlist boundary.",
+  "author": {
+    "name": "Richard Torcato",
+    "email": "rtorcato@me.com",
+    "url": "https://github.com/rtorcato"
+  },
+  "homepage": "https://docs.torcato.dev/db-common/",
+  "repository": "https://github.com/rtorcato/db-common",
+  "license": "MIT",
+  "keywords": ["database", "pagination", "query", "typescript"]
+}

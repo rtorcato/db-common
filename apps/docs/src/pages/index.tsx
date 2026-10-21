@@ -2,6 +2,7 @@ import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import InstallTabs from '@rtorcato/shared-docs/components/InstallTabs'
 import Siblings from '@rtorcato/shared-docs/components/Siblings'
+import UseWithAI from '@rtorcato/shared-docs/components/UseWithAI'
 import CodeBlock from '@theme/CodeBlock'
 import Layout from '@theme/Layout'
 import ThemedImage from '@theme/ThemedImage'
@@ -200,6 +201,7 @@ export default function Home(): ReactElement {
 		>
 			<main>
 				<Hero />
+				<UseWithAI repo="rtorcato/db-common" plugin="db-common" pkg="@rtorcato/db-common" />
 				<Pillars />
 				<Siblings self="@rtorcato/db-common" />
 			</main>

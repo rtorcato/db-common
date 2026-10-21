@@ -34,8 +34,10 @@
     "prepublishOnly": "pnpm build",
     "prepare": "husky",
     "release": "semantic-release",
-    "verify": "pnpm typecheck && pnpm check && pnpm exec vitest run",
-    "size-limit": "size-limit"
+    "verify": "pnpm check:agents && pnpm typecheck && pnpm check && pnpm exec vitest run",
+    "size-limit": "size-limit",
+    "sync:agents": "node scripts/sync-agents.mjs",
+    "check:agents": "node scripts/sync-agents.mjs --check"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",
@@ -70,6 +72,7 @@
     }
   },
   "files": [
+    "AGENTS.md",
     "dist"
   ],
   "publishConfig": {
