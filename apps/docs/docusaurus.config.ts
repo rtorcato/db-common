@@ -185,7 +185,7 @@ const config: Config = {
 			copyright: footerCopyright(),
 		},
 		prism: {
-			theme: prismThemes.vsDark,
+			theme: prismThemes.vsLight,
 			darkTheme: prismThemes.vsDark,
 			additionalLanguages: ['bash', 'json', 'typescript', 'sql'],
 		},
