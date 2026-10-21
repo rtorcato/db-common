@@ -79,6 +79,11 @@ jobs:
       - name: 🏗️ Build
         run: pnpm run build
 
+      # Workspace packages import the root package through its dist/, so this
+      # must run after the root build.
+      - name: 🏗️ Build workspace packages
+        run: pnpm --filter './packages/*' build
+
       # OIDC trusted publishing needs npm CLI >= 11.5.1; the runner ships 10.x.
       - name: 📦 Upgrade npm for OIDC trusted publishing
         run: npm install -g npm@latest
@@ -87,3 +92,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+
+      # semantic-release only releases the root package. db-drizzle's version is
+      # bumped by hand in its package.json, so publish it when that version is
+      # not on npm yet. It goes after the root release because it depends on
+      # @rtorcato/db-common. `pnpm pack` rewrites `workspace:^` to a real range
+      # (plain `npm publish` would ship `workspace:^` as-is); npm publishes the
+      # tarball so OIDC trusted publishing applies. npm needs a trusted publisher
+      # on @rtorcato/db-drizzle (this repo, release.yml, `release` environment).
+      - name: 🚀 Publish @rtorcato/db-drizzle
+        working-directory: packages/db-drizzle
+        run: |
+          name=$(node -p "require('./package.json').name")
+          version=$(node -p "require('./package.json').version")
+          if [ -n "$(npm view "$name@$version" version 2>/dev/null)" ]; then
+            echo "$name@$version is already on npm; nothing to publish."
+            exit 0
+          fi
+          tarball=$(pnpm pack --pack-destination "$RUNNER_TEMP" | tail -n 1)
+          npm publish "$tarball"

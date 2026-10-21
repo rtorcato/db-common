@@ -274,7 +274,7 @@ importers:
   packages/db-drizzle:
     dependencies:
       '@rtorcato/db-common':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../..
     devDependencies:
       '@rtorcato/repo-tooling':

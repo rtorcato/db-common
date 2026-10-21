@@ -17,6 +17,14 @@ where Drizzle lives.
 pnpm add @rtorcato/db-drizzle drizzle-orm  # + pg for ./connection, drizzle-kit for ./config
 ```
 
+| Peer dependency | Version    | Needed for                                  |
+| --------------- | ---------- | ------------------------------------------- |
+| `drizzle-orm`   | `^0.45.2`  | everything (required)                       |
+| `pg`            | `^8.13.0`  | `./connection` (optional)                   |
+| `drizzle-kit`   | `^0.31.10` | `./config` (optional)                       |
+
+Full guide with an example per adapter: <https://docs.torcato.dev/db-common/guides/drizzle>.
+
 ## Adapters
 
 ```ts

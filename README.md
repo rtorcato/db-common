@@ -66,6 +66,35 @@ cursorPaginate({ size: 20, column: 'id', after })
 
 The package targets Node.js ≥22 and ships as both ESM and CommonJS.
 
+## Drizzle adapters
+
+[`@rtorcato/db-drizzle`](packages/db-drizzle) turns those shapes into Drizzle ORM
+queries on Postgres. It's a separate package so `db-common` stays driver-agnostic.
+
+```bash
+pnpm add @rtorcato/db-drizzle drizzle-orm
+# + pg for @rtorcato/db-drizzle/connection, drizzle-kit for @rtorcato/db-drizzle/config
+```
+
+```ts
+import { orderBy, paginate, where } from '@rtorcato/db-common'
+import { toDrizzleOrderBy, toDrizzleWhere, withPage } from '@rtorcato/db-drizzle'
+
+const cols = { status: users.status, name: users.name }
+
+const rows = await withPage(
+  db
+    .select()
+    .from(users)
+    .where(toDrizzleWhere(where({ status: 'active' }), cols))
+    .orderBy(...toDrizzleOrderBy(orderBy('name'), cols)),
+  paginate({ page: 2, size: 25 })
+)
+```
+
+Peer dependencies and an example for each adapter are in the
+[Drizzle adapters guide](https://docs.torcato.dev/db-common/guides/drizzle).
+
 ## Use with AI
 
 A skill ships with the package so AI coding tools use db-common the way it's meant to be used.
