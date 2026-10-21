@@ -1,3 +1,10 @@
+<!-- brand-kit:banner:start -->
+<picture>
+  <source media="(max-width: 640px)" srcset="https://raw.githubusercontent.com/rtorcato/db-common/main/brand/banner-mobile.png">
+  <img src="https://raw.githubusercontent.com/rtorcato/db-common/main/brand/banner.png" alt="Shared, tree-shakeable TypeScript database utilities for Node projects." width="1600">
+</picture>
+<!-- brand-kit:banner:end -->
+
 # db-drizzle
 
 > Drizzle ORM adapters for [`db-common`](../../README.md) shapes — Postgres.
