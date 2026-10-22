@@ -6,6 +6,7 @@
 export { type ColumnMap, resolveColumn } from './columns.js'
 export { toDrizzleWhere } from './where.js'
 export { toDrizzleOrderBy } from './order-by.js'
+export { toDrizzleOnConflict, toDrizzleValues } from './write.js'
 export { withPage } from './paginate.js'
 export { type DrizzleCursor, toDrizzleCursor } from './cursor.js'
 export { id, timestamps } from './schema.js'
