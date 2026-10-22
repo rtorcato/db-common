@@ -57,6 +57,7 @@ jobs:
           path: |
             ~/.pnpm-store
             node_modules
+            packages/*/node_modules
           key: ${{ steps.cache-key.outputs.key }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
@@ -86,6 +87,7 @@ jobs:
           path: |
             ~/.pnpm-store
             node_modules
+            packages/*/node_modules
           key: ${{ needs.dependencies.outputs.cache-key }}
 
       - name: 🔍 Run linting
@@ -113,6 +115,7 @@ jobs:
           path: |
             ~/.pnpm-store
             node_modules
+            packages/*/node_modules
           key: ${{ needs.dependencies.outputs.cache-key }}
 
       - name: 🔍 Type check
@@ -145,6 +148,7 @@ jobs:
           path: |
             ~/.pnpm-store
             node_modules
+            packages/*/node_modules
           key: ${{ needs.dependencies.outputs.cache-key }}
 
       - name: 🧪 Run tests
@@ -172,6 +176,7 @@ jobs:
           path: |
             ~/.pnpm-store
             node_modules
+            packages/*/node_modules
           key: ${{ needs.dependencies.outputs.cache-key }}
 
       - name: 🏗️ Build project
@@ -213,9 +218,10 @@ jobs:
           path: |
             ~/.pnpm-store
             node_modules
+            packages/*/node_modules
           key: ${{ needs.dependencies.outputs.cache-key }}
 
-      # The cache holds only root node_modules; install links packages/*/node_modules.
+      # Cheap re-link; the install also guarantees every workspace package's node_modules.
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
 
