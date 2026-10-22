@@ -3,9 +3,11 @@ import {
 	type Column,
 	type SQL,
 	and,
+	between,
 	eq,
 	gt,
 	gte,
+	ilike,
 	inArray,
 	isNotNull,
 	isNull,
@@ -13,6 +15,7 @@ import {
 	lt,
 	lte,
 	ne,
+	notInArray,
 } from 'drizzle-orm'
 import { type ColumnMap, resolveColumn } from './columns.js'
 
@@ -35,8 +38,23 @@ function toComparison(column: Column, op: Operator, val: unknown): SQL {
 			return lte(column, val as never)
 		case 'in':
 			return inArray(column, val as unknown[])
+		case 'notIn':
+			return notInArray(column, val as unknown[])
 		case 'like':
 			return like(column, val as string)
+		case 'ilike':
+			return ilike(column, val as string)
+		// A boolean flag: `{ isNull: false }` means IS NOT NULL (and vice versa).
+		case 'isNull':
+			return val === false ? isNotNull(column) : isNull(column)
+		case 'isNotNull':
+			return val === false ? isNull(column) : isNotNull(column)
+		case 'between': {
+			if (!Array.isArray(val) || val.length !== 2) {
+				throw new Error('db-drizzle: "between" needs a [min, max] pair')
+			}
+			return between(column, val[0] as never, val[1] as never)
+		}
 		default: {
 			const exhaustive: never = op
 			throw new Error(`db-drizzle: unsupported operator "${exhaustive}"`)
@@ -48,7 +66,7 @@ function toComparison(column: Column, op: Operator, val: unknown): SQL {
  * Map a db-common `Condition[]` (from `where()`) into a single Drizzle `SQL`
  * predicate, ANDing the parts. Returns `undefined` for an empty list so you can
  * pass it straight to `.where()`. `eq`/`ne` against `null` become `IS NULL` /
- * `IS NOT NULL`.
+ * `IS NOT NULL`; `ilike` is Postgres-only (use `like` on MySQL/SQLite).
  *
  *   toDrizzleWhere(where({ status: 'active', age: { gte: 18 } }), cols)
  *   // → and(eq(users.status, 'active'), gte(users.age, 18))

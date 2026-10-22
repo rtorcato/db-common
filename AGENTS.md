@@ -28,7 +28,9 @@ where({ status: "active", age: { gte: 18 } });
 // → [{ col: "status", op: "eq", val: "active" },
 //    { col: "age", op: "gte", val: 18 }]
 //   bare values become `eq`; objects use operator keys
-//   (eq, ne, gt, gte, lt, lte, in, like). A `null` val is kept — map it to IS NULL.
+//   (eq, ne, gt, gte, lt, lte, in, notIn, like, ilike, isNull, isNotNull, between).
+//   A `null` val is kept — map it to IS NULL. `isNull`/`isNotNull` take a
+//   boolean (`false` inverts); `between` takes a [min, max] pair.
 ```
 
 ## Allowlist columns from request input
