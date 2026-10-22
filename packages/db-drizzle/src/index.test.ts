@@ -1,4 +1,4 @@
-import { cursorPaginate, orderBy, paginate, where } from '@rtorcato/db-common'
+import { cursorPaginate, onConflict, orderBy, paginate, pickMany, where } from '@rtorcato/db-common'
 import type { SQL } from 'drizzle-orm'
 import { PgDialect, integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { describe, expect, it } from 'vitest'
@@ -6,6 +6,7 @@ import type { ColumnMap } from './columns.js'
 import { toDrizzleCursor } from './cursor.js'
 import { toDrizzleOrderBy } from './order-by.js'
 import { withPage } from './paginate.js'
+import { toDrizzleOnConflict, toDrizzleValues } from './write.js'
 import { toDrizzleWhere } from './where.js'
 
 const users = pgTable('users', {
@@ -85,6 +86,39 @@ describe('toDrizzleWhere', () => {
 
 	it('throws on an unknown column', () => {
 		expect(() => toDrizzleWhere(where({ evil: 1 }), cols)).toThrow(/unknown column "evil"/)
+	})
+})
+
+describe('toDrizzleValues', () => {
+	it('turns a bulk shape into row objects keyed by column', () => {
+		expect(
+			toDrizzleValues(pickMany([{ name: 'Ada', age: 36 }, { name: 'Bo' }], ['name', 'age']), cols)
+		).toEqual([
+			{ name: 'Ada', age: 36 },
+			{ name: 'Bo', age: undefined },
+		])
+	})
+
+	it('throws on an unknown column', () => {
+		expect(() => toDrizzleValues(pickMany([{ evil: 1 }], ['evil']), cols)).toThrow(
+			/unknown column "evil"/
+		)
+	})
+})
+
+describe('toDrizzleOnConflict', () => {
+	it('resolves the target columns and builds the set record', () => {
+		expect(toDrizzleOnConflict(onConflict(['id'], { name: 'Ada', age: 36 }), cols)).toEqual({
+			target: [users.id],
+			set: { name: 'Ada', age: 36 },
+		})
+	})
+
+	it('throws on an unknown column or an empty set', () => {
+		expect(() => toDrizzleOnConflict(onConflict(['evil'], { name: 'x' }), cols)).toThrow(
+			/unknown column "evil"/
+		)
+		expect(() => toDrizzleOnConflict(onConflict(['id']), cols)).toThrow(/onConflictDoNothing/)
 	})
 })
 

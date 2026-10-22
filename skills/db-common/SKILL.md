@@ -90,7 +90,7 @@ const next = rows.length > q.limit ? buildCursor(rows[q.limit - 1], "id") : unde
 ## Write side and result mapping
 
 ```ts
-import { mapRows, pick, setClause } from "@rtorcato/db-common";
+import { mapRows, onConflict, pick, pickMany, setClause } from "@rtorcato/db-common";
 
 pick({ name: "Ada", email: undefined, active: null }, ["name", "email", "active"]);
 // → { columns: ["name", "active"], values: ["Ada", null] }   (INSERT)
@@ -98,11 +98,19 @@ pick({ name: "Ada", email: undefined, active: null }, ["name", "email", "active"
 setClause({ name: "Ada", bio: undefined, active: null });
 // → [{ col: "name", val: "Ada" }, { col: "active", val: null }]   (UPDATE … SET)
 
+pickMany([{ name: "Ada" }, { name: "Bo", bio: null }], ["name", "bio"]);
+// → { columns: ["name", "bio"], rows: [["Ada", undefined], ["Bo", null]] }   (bulk INSERT)
+//   a key unset in every row is dropped; unset in some rows → `undefined` (DEFAULT)
+
+onConflict(["email"], { name: "Ada", bio: undefined });
+// → { target: ["email"], set: [{ col: "name", val: "Ada" }] }   (ON CONFLICT … DO UPDATE)
+//   empty `set` = do nothing; an empty `target` throws
+
 mapRows(rows, { user_id: "id", is_active: ["active", Boolean] });
 // → [{ id: 1, active: true }, …]   columns not in the spec are dropped
 ```
 
-Only `undefined` is skipped by `pick`/`setClause`; `null` is kept as a NULL write.
+Only `undefined` is skipped by `pick`/`pickMany`/`setClause`; `null` is kept as a NULL write.
 
 ## Constraints
 

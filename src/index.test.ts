@@ -7,10 +7,12 @@ import {
 	encodeCursor,
 	mapRow,
 	mapRows,
+	onConflict,
 	orderBy,
 	pageMeta,
 	paginate,
 	pick,
+	pickMany,
 	setClause,
 	where,
 } from './index.js'
@@ -96,6 +98,51 @@ describe('setClause', () => {
 			{ col: 'name', val: 'Ada' },
 			{ col: 'active', val: null },
 		])
+	})
+})
+
+describe('pickMany', () => {
+	it('shares columns across rows, dropping keys unset in every row', () => {
+		expect(
+			pickMany(
+				[
+					{ name: 'Ada', bio: undefined },
+					{ name: 'Bo', bio: undefined },
+				],
+				['name', 'bio']
+			)
+		).toEqual({ columns: ['name'], rows: [['Ada'], ['Bo']] })
+	})
+
+	it('keeps a column set in some rows, with undefined where unset and null kept', () => {
+		expect(pickMany([{ name: 'Ada' }, { name: 'Bo', bio: null }], ['name', 'bio'])).toEqual({
+			columns: ['name', 'bio'],
+			rows: [
+				['Ada', undefined],
+				['Bo', null],
+			],
+		})
+	})
+
+	it('returns empty shapes for no rows', () => {
+		expect(pickMany([], ['name'])).toEqual({ columns: [], rows: [] })
+	})
+})
+
+describe('onConflict', () => {
+	it('pairs the target with setClause assignments', () => {
+		expect(onConflict(['email'], { name: 'Ada', bio: undefined, active: null })).toEqual({
+			target: ['email'],
+			set: [
+				{ col: 'name', val: 'Ada' },
+				{ col: 'active', val: null },
+			],
+		})
+	})
+
+	it('has an empty set for do-nothing and rejects an empty target', () => {
+		expect(onConflict(['email']).set).toEqual([])
+		expect(() => onConflict([])).toThrow(/target/)
 	})
 })
 
