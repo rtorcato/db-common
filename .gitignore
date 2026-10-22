@@ -44,3 +44,7 @@ coverage/
 
 # TypeScript
 *.tsbuildinfo
+
+# Copied in by db-common's `prepack` so the npm tarball ships them
+packages/db-common/README.md
+packages/db-common/LICENSE

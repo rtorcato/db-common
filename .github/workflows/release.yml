@@ -76,11 +76,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       # `files` is ["dist"] and nothing else builds it before `npm publish`.
-      - name: 🏗️ Build
-        run: pnpm run build
-
-      # Workspace packages import the root package through its dist/, so this
-      # must run after the root build.
+      # db-drizzle imports db-common through its dist/; pnpm builds a filtered
+      # run in dependency order, so db-common goes first.
       - name: 🏗️ Build workspace packages
         run: pnpm --filter './packages/*' build
 
@@ -88,12 +85,20 @@ jobs:
       - name: 📦 Upgrade npm for OIDC trusted publishing
         run: npm install -g npm@latest
 
+      # semantic-release runs inside packages/db-common (its package.json and
+      # release.config.mjs live there). It still analyses every commit since the
+      # last tag and pushes the same `v<version>` tags. README.md and LICENSE sit
+      # at the repo root, so copy them in first, as the GitHub release asset and
+      # the npm tarball both expect them next to package.json.
       - name: 🚀 Run semantic-release
+        working-directory: packages/db-common
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: |
+          cp ../../README.md ../../LICENSE .
+          npx semantic-release
 
-      # semantic-release only releases the root package. db-drizzle's version is
+      # semantic-release only releases @rtorcato/db-common. db-drizzle's version is
       # bumped by hand in its package.json, so publish it when that version is
       # not on npm yet. It goes after the root release because it depends on
       # @rtorcato/db-common. `pnpm pack` rewrites `workspace:^` to a real range

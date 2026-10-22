@@ -19,7 +19,7 @@ not interpolate values or emit query strings.
   family sibling, compose it rather than reinvent. Add it as a dependency the
   first time a helper actually needs it, not speculatively (zero runtime deps
   today).
-- **One helper per file** in `src/`, re-exported from `src/index.ts` with its
+- **One helper per file** in `packages/db-common/src/`, re-exported from `packages/db-common/src/index.ts` with its
   types. Match the existing style: a short JSDoc with a worked `// →` example,
   named exports only.
 - **Inputs often come from query strings** — clamp/floor junk (see `paginate`),
@@ -29,12 +29,12 @@ not interpolate values or emit query strings.
 - Mark deliberate shortcuts with a `ponytail:` comment (see `where.ts`).
 - **Keep the AI skill current.** A PR that changes the public API also updates
   `skills/db-common/SKILL.md` and runs `pnpm sync:agents` to regenerate
-  `AGENTS.md` (never edit it by hand; `pnpm verify` fails when it's stale).
+  `packages/db-common/AGENTS.md` (never edit it by hand; `pnpm verify` fails when it's stale).
 
 ## Commands
 
 - `pnpm verify` — AGENTS.md sync check + typecheck + Biome check + tests (run before committing)
-- `pnpm test` / `pnpm build`
+- `pnpm test` / `pnpm build` (both run the `packages/db-common` package; `packages/db-drizzle` is covered by the CI `packages` job)
 
 Tooling (TS, tsup, Vitest, Biome, Husky, semantic-release) comes from
 `@rtorcato/repo-tooling`. Commits are conventional (commitlint enforced).
