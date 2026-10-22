@@ -177,6 +177,10 @@ jobs:
       - name: 🏗️ Build project
         run: pnpm build
 
+      # Budget lives in .size-limit.json (~25% above the measured brotli size).
+      - name: 📏 Check bundle size
+        run: pnpm size-limit
+
       - name: 📦 Upload build artifacts
         uses: actions/upload-artifact@v7
         with:
