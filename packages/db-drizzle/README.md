@@ -9,6 +9,8 @@
 
 > Drizzle ORM adapters for [`db-common`](../../README.md) shapes — Postgres.
 
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40">](https://buymeacoffee.com/rtorcato)
+
 Maps db-common's plain shapes (`where`, `orderBy`, `paginate`, `cursorPaginate`)
 into Drizzle query fragments. `db-common` stays driver-agnostic; this package is
 where Drizzle lives.
