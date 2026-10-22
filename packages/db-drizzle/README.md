@@ -49,6 +49,10 @@ const rows = await withPage(
 - `toDrizzleWhere(Condition[], cols)` → `SQL | undefined` (`eq`/`ne` on `null`
   become `IS NULL`/`IS NOT NULL`; `in`/`notIn` → `inArray`/`notInArray`;
   `between` takes a `[min, max]` pair; `ilike` is Postgres-only).
+- `toDrizzleValues(BulkInsertShape, cols)` → row objects for `.values()` (from
+  `pickMany`; `cols` keys must be the table's property names).
+- `toDrizzleOnConflict(OnConflict, cols)` → `{ target, set }` for
+  `.onConflictDoUpdate()`; throws on an empty `set` (use `.onConflictDoNothing()`).
 - `toDrizzleOrderBy(Sort[], cols)` → `SQL[]` for `.orderBy(...)`.
 - `withPage(qb, Page)` → `qb.limit().offset()`.
 - `toDrizzleCursor(CursorQuery, cols)` → `{ limit, where, orderBy }`.

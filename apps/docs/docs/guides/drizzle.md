@@ -62,6 +62,24 @@ const rows = await db.select().from(users).where(toDrizzleWhere(conds, cols))
 // where "status" = 'active' and "age" >= 18
 ```
 
+## Bulk insert and upsert: `toDrizzleValues`, `toDrizzleOnConflict`
+
+`pickMany()` shapes many rows for one INSERT and `onConflict()` shapes the
+upsert clause. The adapters resolve column names against your column map, so its
+keys must be the table's property names. A cell left `undefined` falls back to
+the column default. `toDrizzleOnConflict` throws on an empty update set; use
+`.onConflictDoNothing({ target })` for that case.
+
+```ts
+import { onConflict, pickMany } from '@rtorcato/db-common'
+import { toDrizzleOnConflict, toDrizzleValues } from '@rtorcato/db-drizzle'
+
+await db
+  .insert(users)
+  .values(toDrizzleValues(pickMany(rows, ['email', 'name']), cols))
+  .onConflictDoUpdate(toDrizzleOnConflict(onConflict(['email'], { name: 'Ada' }), cols))
+```
+
 ## Sorting: `toDrizzleOrderBy`
 
 Turns a `Sort[]` from `orderBy()` into an array of `asc()`/`desc()`
