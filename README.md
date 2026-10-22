@@ -14,15 +14,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/rtorcato)
 
-> Shared, tree-shakeable TypeScript database utilities for the `@rtorcato/*` family.
+> Shared, tree-shakeable TypeScript database utilities.
 
 📖 **Docs:** https://docs.torcato.dev/db-common/
 
 ## Description
 
 `db-common` is a collection of small, focused, database-agnostic helpers —
-pagination, query shaping, result mapping — built the same way as the rest of
-the `@rtorcato/*` family: TypeScript-first, tree-shakeable, with zero
+pagination, query shaping, result mapping — built the same way as the other
+torcato.dev libraries: TypeScript-first, tree-shakeable, with zero
 runtime dependencies. Ships as ESM and CommonJS for broad compatibility.
 
 > See the [milestones](https://github.com/rtorcato/db-common/milestones) for what's planned next.
