@@ -1,0 +1,29 @@
+name: Feature request
+description: Propose a new helper, adapter, or change to an existing one.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: What and why
+      description: What's the missing capability, and what use case prompted it?
+    validations:
+      required: true
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      options:
+        - "@rtorcato/db-common"
+        - "@rtorcato/db-drizzle"
+        - "Not sure"
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      description: Function signatures or example usage.
+      render: ts
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

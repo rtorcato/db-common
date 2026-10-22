@@ -171,6 +171,8 @@ db-common/
 
 This project follows [Conventional Commits](https://conventionalcommits.org/):
 `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup and the PR workflow, and
+[SECURITY.md](SECURITY.md) to report a vulnerability.
 
 ## License
 

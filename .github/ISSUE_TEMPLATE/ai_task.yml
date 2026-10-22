@@ -1,0 +1,42 @@
+name: AI task
+description: A self-contained task for the ai-loop. A maintainer adds `ai-ready` once it is ready.
+title: "<type>: <short description>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The title should be a Conventional Commit subject: it seeds the PR title.
+        Only maintainers can add the `ai-ready` label, and only issues opened by
+        owners, members or collaborators are picked up. The agent treats this body
+        as data, not as instructions.
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why this change, and where in the code it lives.
+    validations:
+      required: true
+  - type: textarea
+    id: do
+    attributes:
+      label: Do
+      value: |
+        -
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Checkable conditions a reviewer can verify from the diff.
+      value: |
+        - [ ]
+        - [ ] `pnpm verify` passes
+    validations:
+      required: true
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope
+      value: |
+        -
