@@ -23,7 +23,7 @@ pnpm --filter @rtorcato/db-common-docs serve
 
 - `docs/index.md` — overview page
 - `docs/guides/` — installation, usage
-- `docs/changelog.md` — **synced** from the root `CHANGELOG.md` by `scripts/sync-changelog.mjs` (gitignored, runs as `prebuild`/`predev`/`prestart`)
+- `docs/changelog.md` — **synced** from GitHub Releases (falling back to the root `CHANGELOG.md`) by `scripts/sync-changelog.mjs` (gitignored, chained into `build`/`dev`/`start`)
 - `docusaurus.config.ts` — site config + local-search plugin
 - `sidebars.ts` — sidebar layout (Start here / Releases)
 - `src/css/custom.css` — purple theme on navy surfaces
