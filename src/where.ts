@@ -1,4 +1,17 @@
-export type Operator = 'eq' | 'ne' | 'gt' | 'gte' | 'lt' | 'lte' | 'in' | 'like'
+export type Operator =
+	| 'eq'
+	| 'ne'
+	| 'gt'
+	| 'gte'
+	| 'lt'
+	| 'lte'
+	| 'in'
+	| 'notIn'
+	| 'like'
+	| 'ilike'
+	| 'isNull'
+	| 'isNotNull'
+	| 'between'
 
 export interface Condition {
 	col: string
@@ -18,7 +31,12 @@ const OPERATORS: ReadonlySet<string> = new Set<Operator>([
 	'lt',
 	'lte',
 	'in',
+	'notIn',
 	'like',
+	'ilike',
+	'isNull',
+	'isNotNull',
+	'between',
 ])
 
 // ponytail: treats any object whose keys are ALL operator names as an operator
@@ -34,6 +52,8 @@ function isOperatorObject(val: unknown): val is Record<Operator, unknown> {
  * Normalize a filter object into a flat list of `{ col, op, val }`. Bare values
  * become `eq`; nested objects use operator keys. The caller maps these to its
  * driver's placeholders — a `val` of `null` is left as-is (map to IS NULL).
+ * `isNull` / `isNotNull` take a boolean (`false` inverts); `between` takes a
+ * `[min, max]` pair and `notIn` an array.
  *
  *   where({ status: 'active', age: { gte: 18 } })
  *   // → [{ col: 'status', op: 'eq', val: 'active' },

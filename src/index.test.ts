@@ -58,6 +58,24 @@ describe('where', () => {
 			{ col: 'deletedAt', op: 'eq', val: null },
 		])
 	})
+
+	it('passes the newer operators through', () => {
+		expect(
+			where({
+				name: { ilike: '%x%' },
+				status: { notIn: ['a'] },
+				age: { between: [18, 65] },
+				deletedAt: { isNull: true },
+				email: { isNotNull: true },
+			})
+		).toEqual([
+			{ col: 'name', op: 'ilike', val: '%x%' },
+			{ col: 'status', op: 'notIn', val: ['a'] },
+			{ col: 'age', op: 'between', val: [18, 65] },
+			{ col: 'deletedAt', op: 'isNull', val: true },
+			{ col: 'email', op: 'isNotNull', val: true },
+		])
+	})
 })
 
 describe('pick', () => {

@@ -54,6 +54,31 @@ describe('toDrizzleWhere', () => {
 		expect(render(toDrizzleWhere(where({ name: { like: '%x%' } }), cols)).sql).toContain('like')
 	})
 
+	it('maps ilike, notIn and between', () => {
+		const ilikeSql = render(toDrizzleWhere(where({ name: { ilike: '%x%' } }), cols))
+		expect(ilikeSql.sql).toContain('ilike')
+		expect(ilikeSql.params).toEqual(['%x%'])
+		const notIn = render(toDrizzleWhere(where({ status: { notIn: ['a', 'b'] } }), cols))
+		expect(notIn.sql).toContain('not in (')
+		expect(notIn.params).toEqual(['a', 'b'])
+		const range = render(toDrizzleWhere(where({ age: { between: [18, 65] } }), cols))
+		expect(range.sql).toContain('between $1 and $2')
+		expect(range.params).toEqual([18, 65])
+	})
+
+	it('maps isNull / isNotNull, with false inverting', () => {
+		const sqlOf = (f: Parameters<typeof where>[0]) => render(toDrizzleWhere(where(f), cols)).sql
+		expect(sqlOf({ status: { isNull: true } })).toContain('is null')
+		expect(sqlOf({ status: { isNull: false } })).toContain('is not null')
+		expect(sqlOf({ status: { isNotNull: true } })).toContain('is not null')
+		expect(sqlOf({ status: { isNotNull: false } })).toContain('is null')
+	})
+
+	it('rejects a malformed between', () => {
+		expect(() => toDrizzleWhere(where({ age: { between: [1] } }), cols)).toThrow(/\[min, max\]/)
+		expect(() => toDrizzleWhere(where({ age: { between: 5 } }), cols)).toThrow(/\[min, max\]/)
+	})
+
 	it('returns undefined for an empty filter', () => {
 		expect(toDrizzleWhere(where({}), cols)).toBeUndefined()
 	})

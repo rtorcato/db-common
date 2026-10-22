@@ -47,7 +47,8 @@ const rows = await withPage(
 ```
 
 - `toDrizzleWhere(Condition[], cols)` → `SQL | undefined` (`eq`/`ne` on `null`
-  become `IS NULL`/`IS NOT NULL`; `in` → `inArray`).
+  become `IS NULL`/`IS NOT NULL`; `in`/`notIn` → `inArray`/`notInArray`;
+  `between` takes a `[min, max]` pair; `ilike` is Postgres-only).
 - `toDrizzleOrderBy(Sort[], cols)` → `SQL[]` for `.orderBy(...)`.
 - `withPage(qb, Page)` → `qb.limit().offset()`.
 - `toDrizzleCursor(CursorQuery, cols)` → `{ limit, where, orderBy }`.

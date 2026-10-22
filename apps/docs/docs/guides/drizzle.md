@@ -48,7 +48,9 @@ the first.
 Turns a `Condition[]` from `where()` into one `SQL` predicate with the parts
 ANDed. An empty list returns `undefined`, so you can pass it straight to
 `.where()`. `eq` and `ne` against `null` become `IS NULL` and `IS NOT NULL`;
-`in` becomes `inArray`.
+`in` and `notIn` become `inArray` and `notInArray`; `isNull` / `isNotNull` take a
+boolean (`false` inverts); `between` takes a `[min, max]` pair and throws on
+anything else. `ilike` is Postgres-only, so use `like` on MySQL and SQLite.
 
 ```ts
 import { allow, where } from '@rtorcato/db-common'
