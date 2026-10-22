@@ -10,6 +10,16 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'category',
+			label: 'Guides',
+			collapsed: false,
+			items: [
+				'guides/cursor-pagination',
+				'guides/filters-from-query-strings',
+				'guides/allowlisting-fields',
+			],
+		},
+		{
+			type: 'category',
 			label: 'API Reference',
 			// TypeDoc emits pages into docs/api from src/index.ts; Docusaurus scans them.
 			link: { type: 'doc', id: 'api/index' },
