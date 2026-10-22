@@ -2,6 +2,6 @@
   {
     "name": "package (default entry)",
     "path": "dist/index.js",
-    "limit": "10 kB"
+    "limit": "1.2 kB"
   }
 ]
