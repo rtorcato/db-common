@@ -1,6 +1,6 @@
 ---
 title: db-common
-description: Shared, tree-shakeable TypeScript database utilities for the @rtorcato/* family.
+description: Shared, tree-shakeable TypeScript database utilities.
 sidebar_position: 0
 ---
 
@@ -12,7 +12,7 @@ sidebar_position: 0
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@rtorcato/db-common)](https://bundlephobia.com/package/@rtorcato/db-common)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Shared, tree-shakeable TypeScript database utilities for the `@rtorcato/*` family.
+Shared, tree-shakeable TypeScript database utilities.
 
 - **TypeScript-first** — strict types, generics preserved, JSDoc-rich in your IDE.
 - **Tree-shakeable** — ESM-only with `sideEffects: false`; bundlers keep only what you import.

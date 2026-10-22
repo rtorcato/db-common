@@ -10,7 +10,7 @@ const PROJECT_FAMILY = projectFamilyItems()
 
 const config: Config = {
 	title: 'db-common',
-	tagline: 'Shared, tree-shakeable TypeScript database utilities for the @rtorcato/* family.',
+	tagline: 'Shared, tree-shakeable TypeScript database utilities.',
 	favicon: 'img/favicon.svg',
 
 	url: 'https://docs.torcato.dev',

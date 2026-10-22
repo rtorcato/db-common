@@ -133,7 +133,7 @@ function Hero(): ReactElement {
 					<span className={styles.wmCommon}>common</span>
 				</div>
 				<p className={styles.tagline}>
-					Shared, tree-shakeable TypeScript database utilities for the @rtorcato/* family.
+					Shared, tree-shakeable TypeScript database utilities.
 				</p>
 
 				<div className={styles.heroBody}>
@@ -197,7 +197,7 @@ export default function Home(): ReactElement {
 	return (
 		<Layout
 			title="db-common"
-			description="Shared, tree-shakeable TypeScript database utilities for the @rtorcato/* family."
+			description="Shared, tree-shakeable TypeScript database utilities."
 		>
 			<main>
 				<Hero />

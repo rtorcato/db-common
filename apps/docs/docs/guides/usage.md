@@ -23,8 +23,8 @@ helpers are documented here as they land — track progress on the
 
 ## Conventions
 
-Helpers in `db-common` follow the same contract as the rest of the `@rtorcato/*`
-family:
+Helpers in `db-common` follow the same contract as the other torcato.dev
+libraries:
 
 - **Pure where possible** — given the same input, return the same output; no
   hidden global state.
