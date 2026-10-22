@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - 'apps/docs/**'
-      - 'src/**'
+      - 'packages/db-common/src/**'
       - 'scripts/sync-changelog.mjs'
       - '.github/workflows/docs.yml'
       - 'pnpm-workspace.yaml'

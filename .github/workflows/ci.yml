@@ -186,8 +186,8 @@ jobs:
         with:
           name: build-artifacts
           path: |
-            dist/
-            package.json
+            packages/db-common/dist/
+            packages/db-common/package.json
             README.md
           retention-days: 7
 
@@ -219,20 +219,18 @@ jobs:
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Workspace packages import the root package through its dist/.
-      - name: 🏗️ Build root package
-        run: pnpm build
+      # db-drizzle imports db-common through its dist/. pnpm builds a filtered
+      # run in dependency order, so db-common is built first.
+      - name: 🏗️ Build workspace packages
+        run: pnpm --filter './packages/*' build
 
       - name: 🧪 Typecheck + test workspace packages
         run: pnpm --filter './packages/*' verify
 
-      - name: 🏗️ Build workspace packages
-        run: pnpm --filter './packages/*' build
-
       - name: 💨 Smoke-import built entries
         run: |
-          for f in dist/*.js packages/*/dist/*.js; do node -e "import('./$f')"; done
-          for f in dist/*.cjs packages/*/dist/*.cjs; do node -e "require('./$f')"; done
+          for f in packages/*/dist/*.js; do node -e "import('./$f')"; done
+          for f in packages/*/dist/*.cjs; do node -e "require('./$f')"; done
 
   # The single required check. Branch protection requires only `ci`, so adding a job or
   # changing the Node matrix never touches protection again. Skipped jobs pass; a failed

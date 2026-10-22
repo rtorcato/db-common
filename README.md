@@ -134,7 +134,7 @@ pnpm verify         # typecheck + biome check + test
 ## Documentation site
 
 The docs live in [`apps/docs`](./apps/docs) (Docusaurus) and deploy to GitHub
-Pages on every push to `main` that touches docs or `src/`.
+Pages on every push to `main` that touches docs or `packages/db-common/src/`.
 
 ```bash
 pnpm --filter @rtorcato/db-common-docs dev     # local preview
@@ -145,17 +145,19 @@ pnpm --filter @rtorcato/db-common-docs build   # production build
 
 ```
 db-common/
-├── src/                  # library source
+├── packages/db-common/   # the published @rtorcato/db-common package
+│   ├── src/              # library source
+│   ├── AGENTS.md         # generated from SKILL.md by `pnpm sync:agents`
+│   ├── release.config.mjs # semantic-release config (runs from this directory)
+│   ├── tsup.config.ts
+│   └── vitest.config.ts
+├── packages/db-drizzle/  # @rtorcato/db-drizzle adapters
 ├── apps/docs/            # Docusaurus documentation site
 ├── scripts/              # build/maintenance scripts (changelog, AGENTS.md sync)
 ├── skills/db-common/     # AI skill (SKILL.md, source of truth for AGENTS.md)
 ├── .claude-plugin/       # Claude Code marketplace + plugin manifests
-├── AGENTS.md             # generated from SKILL.md by `pnpm sync:agents`
-├── package.json
-├── tsconfig.json
+├── package.json          # private workspace root
 ├── biome.jsonc
-├── vitest.config.ts
-├── tsup.config.ts
 └── .husky/               # git hooks
 ```
 

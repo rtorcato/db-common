@@ -1,6 +1,6 @@
 {
-  "name": "@rtorcato/db-common",
-  "version": "1.4.1",
+  "name": "db-common-monorepo",
+  "private": true,
   "homepage": "https://docs.torcato.dev/db-common/",
   "description": "Database-agnostic TypeScript helpers for pagination, query shaping, and result mapping.",
   "repository": {
@@ -20,22 +20,18 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "typecheck": "tsc --noEmit",
+    "typecheck": "pnpm --filter @rtorcato/db-common typecheck",
     "lint": "biome lint .",
     "format": "biome format .",
     "check": "biome check .",
     "check:fix": "biome check --fix .",
-    "test": "vitest",
-    "test:watch": "vitest --watch",
-    "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage",
-    "build": "tsup",
-    "build:watch": "tsup --watch",
-    "prepublishOnly": "pnpm build",
+    "test": "pnpm --filter @rtorcato/db-common test",
+    "test:watch": "pnpm --filter @rtorcato/db-common test:watch",
+    "coverage": "pnpm --filter @rtorcato/db-common coverage",
+    "build": "pnpm --filter @rtorcato/db-common build",
     "prepare": "husky",
-    "release": "semantic-release",
-    "verify": "pnpm check:agents && pnpm typecheck && pnpm check && pnpm exec vitest run",
-    "size-limit": "size-limit",
+    "verify": "pnpm check:agents && pnpm typecheck && pnpm check && pnpm test",
+    "size-limit": "pnpm --filter @rtorcato/db-common size-limit",
     "sync:agents": "node scripts/sync-agents.mjs",
     "check:agents": "node scripts/sync-agents.mjs --check"
   },
@@ -44,39 +40,8 @@
     "@commitlint/cli": "^21.2.3",
     "@commitlint/config-conventional": "^21.2.3",
     "@rtorcato/repo-tooling": "^6.1.0",
-    "@semantic-release/github": "^12.0.10",
-    "@size-limit/preset-small-lib": "^14.2.0",
-    "@types/node": "^26.6.4",
     "husky": "^9.0.0",
-    "lint-staged": "^17.6.0",
-    "semantic-release": "^25.0.9",
-    "size-limit": "^14.2.0",
-    "tsup": "^8.0.0",
-    "typescript": "^7.0.2",
-    "vitest": "^5.0.3"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
-    }
-  },
-  "files": [
-    "AGENTS.md",
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
+    "lint-staged": "^17.6.0"
   },
   "packageManager": "pnpm@12.10.1",
   "engines": {
