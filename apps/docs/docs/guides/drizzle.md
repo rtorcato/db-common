@@ -68,7 +68,9 @@ const rows = await db.select().from(users).where(toDrizzleWhere(conds, cols))
 upsert clause. The adapters resolve column names against your column map, so its
 keys must be the table's property names. A cell left `undefined` falls back to
 the column default. `toDrizzleOnConflict` throws on an empty update set; use
-`.onConflictDoNothing({ target })` for that case.
+`.onConflictDoNothing({ target })` for that case. Both take their types from the
+column map, so leave it unannotated (not `: ColumnMap`) and the result fits
+`.values()` and `.onConflictDoUpdate()` with no cast.
 
 ```ts
 import { onConflict, pickMany } from '@rtorcato/db-common'
