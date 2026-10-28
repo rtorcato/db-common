@@ -28,7 +28,7 @@ The root package is `@rtorcato/db-common` (`src/`). The Drizzle adapters live in
    ```
    That runs the AGENTS.md sync check, typecheck, Biome and the tests. The husky `pre-push` hook runs it too and blocks the push if it fails. If you touched `packages/db-drizzle`, also run `pnpm build && pnpm --filter './packages/*' verify`.
 4. **Commit using Conventional Commits** (`feat:`, `fix:`, `docs:`, `chore:`, `test:`, `refactor:`, etc.). The husky `commit-msg` hook validates the format.
-5. **Open a PR against `main` with a Conventional Commit title.** PRs are squash-merged, and the squash subject (the PR title, or the commit subject when the PR has a single commit) decides whether the next release includes the change and how the version bumps. CI runs Biome, typecheck, tests (Node 22 and 26), the build with a size budget, and the `db-drizzle` checks. CodeQL runs alongside.
+5. **Open a PR against `main` with a Conventional Commit title.** PRs are squash-merged. If the PR changes `@rtorcato/db-common` or `@rtorcato/db-drizzle` for users, add a changeset (see Releases). CI runs Biome, typecheck, tests (Node 22 and 26), the build with a size budget, and the `db-drizzle` checks. CodeQL runs alongside.
 
 ## Style
 
@@ -36,7 +36,13 @@ Tabs for indentation, single quotes, no semicolons. Enforced by Biome: `pnpm che
 
 ## Releases
 
-Merging doesn't publish. Releases batch up merged commits and ship when a maintainer closes a milestone or dispatches `.github/workflows/release.yml`. Commit types drive the version bump (`fix:` → patch, `feat:` → minor, `BREAKING CHANGE:` → major). Don't tag, close a milestone, or dispatch the workflow yourself. Only project maintainers publish.
+Releases use [Changesets](https://github.com/changesets/changesets). Don't edit `version` in a `package.json` by hand.
+
+1. Add a changeset for any user-facing change: `pnpm changeset`. Pick the package(s) and the bump (patch/minor/major), and commit the file under `.changeset/` with your PR.
+2. Merging to `main` does not publish. Each push opens or updates a "Version Packages" PR that consumes the pending changesets and bumps the versions.
+3. Merging the Version Packages PR is the release. Its `publish` job waits for one approval in the `release` environment, then publishes to npm, creates the GitHub Releases and rebuilds the docs site.
+
+Don't tag manually or dispatch the workflow yourself. Only project maintainers publish.
 
 ## Security
 
