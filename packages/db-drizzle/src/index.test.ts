@@ -1,5 +1,6 @@
 import { cursorPaginate, onConflict, orderBy, paginate, pickMany, where } from '@rtorcato/db-common'
 import type { SQL } from 'drizzle-orm'
+import { drizzle } from 'drizzle-orm/node-postgres'
 import { PgDialect, integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { describe, expect, it } from 'vitest'
 import type { ColumnMap } from './columns.js'
@@ -119,6 +120,31 @@ describe('toDrizzleOnConflict', () => {
 			/unknown column "evil"/
 		)
 		expect(() => toDrizzleOnConflict(onConflict(['id']), cols)).toThrow(/onConflictDoNothing/)
+	})
+})
+
+// The docs snippet (apps/docs/docs/guides/drizzle.md) verbatim. `pnpm typecheck`
+// runs tsc --strict over this file, so a type regression in write.ts fails CI.
+describe('docs upsert snippet', () => {
+	const people = pgTable('people', {
+		id: uuid('id').primaryKey().defaultRandom(),
+		email: text('email').notNull().unique(),
+		name: text('name').notNull(),
+	})
+	const db = drizzle.mock()
+	const peopleCols = { email: people.email, name: people.name }
+
+	it('type-checks under strict and renders the upsert', () => {
+		const rows = [{ email: 'ada@x.dev', name: 'Ada' }]
+		const query = db
+			.insert(people)
+			.values(toDrizzleValues(pickMany(rows, ['email', 'name']), peopleCols))
+			.onConflictDoUpdate(toDrizzleOnConflict(onConflict(['email'], { name: 'Ada' }), peopleCols))
+			.toSQL()
+		expect(query.sql).toBe(
+			'insert into "people" ("id", "email", "name") values (default, $1, $2) on conflict ("email") do update set "name" = $3'
+		)
+		expect(query.params).toEqual(['ada@x.dev', 'Ada', 'Ada'])
 	})
 })
 
