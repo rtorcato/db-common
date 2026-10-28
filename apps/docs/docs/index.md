@@ -15,7 +15,7 @@ sidebar_position: 0
 Shared, tree-shakeable TypeScript database utilities.
 
 - **TypeScript-first** — strict types, generics preserved, JSDoc-rich in your IDE.
-- **Tree-shakeable** — ESM-only with `sideEffects: false`; bundlers keep only what you import.
+- **Tree-shakeable** — the ESM build has `sideEffects: false`; bundlers keep only what you import.
 - **Database-agnostic** — small primitives (pagination, query shaping, result mapping) that don't lock you to a single driver.
 - **Zero runtime dependencies** — nothing to install but the package itself.
 

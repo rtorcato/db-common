@@ -13,7 +13,8 @@ npm install @rtorcato/db-common
 yarn add @rtorcato/db-common
 ```
 
-The package is ESM-only. Your project's `tsconfig.json` should use
+The package ships both ESM and CommonJS builds, so `import` and `require()`
+both work. In an ESM project, your `tsconfig.json` should use
 `"module": "esnext"` (or `"nodenext"`) and your `package.json` should have
 `"type": "module"`.
 
