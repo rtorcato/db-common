@@ -149,7 +149,6 @@ db-common/
 ├── packages/db-common/   # the published @rtorcato/db-common package
 │   ├── src/              # library source
 │   ├── AGENTS.md         # generated from SKILL.md by `pnpm sync:agents`
-│   ├── release.config.mjs # semantic-release config (runs from this directory)
 │   ├── tsup.config.ts
 │   └── vitest.config.ts
 ├── packages/db-drizzle/  # @rtorcato/db-drizzle adapters

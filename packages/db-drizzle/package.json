@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/db-drizzle",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "Drizzle ORM adapters for db-common shapes (Postgres).",
   "type": "module",
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "name": "@rtorcato/db-common",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "homepage": "https://docs.torcato.dev/db-common/",
   "description": "Database-agnostic TypeScript helpers for pagination, query shaping, and result mapping.",
   "repository": {
@@ -30,16 +30,13 @@
     "build:watch": "tsup --watch",
     "prepack": "cp ../../README.md ../../LICENSE .",
     "prepublishOnly": "pnpm build",
-    "release": "semantic-release",
     "size-limit": "size-limit",
     "verify": "pnpm typecheck && pnpm test"
   },
   "devDependencies": {
     "@rtorcato/repo-tooling": "^6.1.0",
-    "@semantic-release/github": "^12.0.10",
     "@size-limit/preset-small-lib": "^14.2.0",
     "@types/node": "^26.6.4",
-    "semantic-release": "^25.0.9",
     "size-limit": "^14.2.0",
     "tsup": "^8.0.0",
     "typescript": "^7.0.2",

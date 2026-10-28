@@ -36,5 +36,7 @@ not interpolate values or emit query strings.
 - `pnpm verify` — AGENTS.md sync check + typecheck + Biome check + tests (run before committing)
 - `pnpm test` / `pnpm build` (both run the `packages/db-common` package; `packages/db-drizzle` is covered by the CI `packages` job)
 
-Tooling (TS, tsup, Vitest, Biome, Husky, semantic-release) comes from
+Tooling (TS, tsup, Vitest, Biome, Husky) comes from
 `@rtorcato/repo-tooling`. Commits are conventional (commitlint enforced).
+Releases use Changesets: a PR that changes a published package adds a
+changeset (`pnpm changeset`); merging the "Version Packages" PR is the release.
