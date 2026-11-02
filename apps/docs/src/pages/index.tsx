@@ -90,7 +90,7 @@ const PILLARS: Pillar[] = [
 	},
 	{
 		title: 'Tree-shakeable',
-		desc: 'The ESM build has `sideEffects: false`. Bundlers keep just the helpers you import — nothing else ships.',
+		desc: 'Ships ESM and CommonJS, with `sideEffects: false`. Bundlers keep just the helpers you import — nothing else ships.',
 		icon: 'feather',
 	},
 	{
