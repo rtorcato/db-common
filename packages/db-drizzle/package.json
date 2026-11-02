@@ -37,15 +37,15 @@
     }
   },
   "devDependencies": {
-    "@rtorcato/repo-tooling": "^6.1.0",
-    "@types/node": "^26.6.4",
+    "@rtorcato/repo-tooling": "^6.1.1",
+    "@types/node": "^26.6.5",
     "@types/pg": "^8.23.1",
     "drizzle-kit": "^0.31.11",
-    "drizzle-orm": "^0.45.3",
+    "drizzle-orm": "^0.45.4",
     "pg": "^8.23.1",
     "tsup": "^8.0.0",
     "typescript": "^7.0.2",
-    "vitest": "^5.0.3"
+    "vitest": "^5.0.5"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

@@ -34,13 +34,13 @@
     "verify": "pnpm typecheck && pnpm test"
   },
   "devDependencies": {
-    "@rtorcato/repo-tooling": "^6.1.0",
-    "@size-limit/preset-small-lib": "^14.2.0",
-    "@types/node": "^26.6.4",
-    "size-limit": "^14.2.0",
+    "@rtorcato/repo-tooling": "^6.1.1",
+    "@size-limit/preset-small-lib": "^14.3.0",
+    "@types/node": "^26.6.5",
+    "size-limit": "^14.3.0",
     "tsup": "^8.0.0",
     "typescript": "^7.0.2",
-    "vitest": "^5.0.3"
+    "vitest": "^5.0.5"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
