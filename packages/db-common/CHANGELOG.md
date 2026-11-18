@@ -1,5 +1,11 @@
 # @rtorcato/db-common
 
+## 1.6.1
+
+### Patch Changes
+
+- 4724842: Fix the README banner on npmjs.com. The shipped README used relative `./brand/` URLs, which npm resolves against `repository.directory` and so 404. It now uses absolute `raw.githubusercontent.com` URLs.
+
 ## 1.6.0
 
 ### Minor Changes
