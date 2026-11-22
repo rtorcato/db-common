@@ -19,6 +19,13 @@ import {
 } from 'drizzle-orm'
 import { type ColumnMap, resolveColumn } from './columns.js'
 
+function assertArray(op: 'in' | 'notIn', val: unknown): unknown[] {
+	if (!Array.isArray(val)) {
+		throw new Error(`db-drizzle: "${op}" needs an array of values`)
+	}
+	return val
+}
+
 // db-common types `val` as `unknown` on purpose (it never inspects values);
 // Drizzle's operators want the column's data type. The caller owns value
 // correctness, so we cast at this single boundary.
@@ -36,10 +43,13 @@ function toComparison(column: Column, op: Operator, val: unknown): SQL {
 			return lt(column, val as never)
 		case 'lte':
 			return lte(column, val as never)
+		// Drizzle renders an empty list as a constant: `in []` matches nothing and
+		// `notIn []` matches everything. A scalar (e.g. `?id[in]=5`) would emit
+		// invalid SQL, so reject it here with a clear error instead.
 		case 'in':
-			return inArray(column, val as unknown[])
+			return inArray(column, assertArray(op, val))
 		case 'notIn':
-			return notInArray(column, val as unknown[])
+			return notInArray(column, assertArray(op, val))
 		case 'like':
 			return like(column, val as string)
 		case 'ilike':
