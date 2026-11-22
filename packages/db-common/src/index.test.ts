@@ -183,6 +183,40 @@ describe('cursor', () => {
 		expect(decodeCursor(after)).toEqual({ createdAt: '2026-01-01', id: 42 })
 	})
 
+	it('a composite cursor from buildCursor advances past page 1', () => {
+		const row = { createdAt: '2026-01-01', id: 42, extra: 'x' }
+		const after = buildCursor(row, ['createdAt', 'id'])
+		const first = cursorPaginate({ size: 20, column: ['createdAt', 'id'] })
+		expect(first.keyset).toBeUndefined()
+		expect(first.order).toEqual([
+			{ col: 'createdAt', dir: 'asc' },
+			{ col: 'id', dir: 'asc' },
+		])
+		expect(cursorPaginate({ size: 20, column: ['createdAt', 'id'], after }).keyset).toEqual({
+			cols: ['createdAt', 'id'],
+			op: 'gt',
+			vals: ['2026-01-01', 42],
+		})
+		const desc = cursorPaginate({ size: 5, column: ['createdAt', 'id'], dir: 'desc', after })
+		expect(desc.keyset?.op).toBe('lt')
+		expect(desc.order.every((s) => s.dir === 'desc')).toBe(true)
+	})
+
+	it('treats a junk or mismatched composite cursor as the first page', () => {
+		for (const after of [
+			'!!!not-base64-json!!!',
+			encodeCursor(42),
+			encodeCursor([1, 2]),
+			encodeCursor(null),
+			encodeCursor({ createdAt: '2026-01-01' }),
+			encodeCursor({ createdAt: '2026-01-01', id: { n: 1 } }),
+		]) {
+			const q = cursorPaginate({ size: 20, column: ['createdAt', 'id'], after })
+			expect(q.keyset).toBeUndefined()
+			expect(q.where).toEqual([])
+		}
+	})
+
 	it('treats a junk or non-scalar cursor as the first page instead of throwing', () => {
 		for (const after of [
 			'garbage',
