@@ -89,6 +89,23 @@ describe('toDrizzleWhere', () => {
 		expect(() => toDrizzleWhere(where({ age: { between: 5 } }), cols)).toThrow(/\[min, max\]/)
 	})
 
+	it('rejects a non-array in / notIn', () => {
+		expect(() => toDrizzleWhere(where({ status: { in: 'a' } }), cols)).toThrow(
+			/"in" needs an array/
+		)
+		expect(() => toDrizzleWhere(where({ status: { notIn: 5 } }), cols)).toThrow(
+			/"notIn" needs an array/
+		)
+	})
+
+	it('accepts an empty in / notIn array without emitting invalid SQL', () => {
+		const empty = render(toDrizzleWhere(where({ status: { in: [] } }), cols))
+		expect(empty.sql).not.toMatch(/in \(\)/)
+		expect(empty.params).toEqual([])
+		const none = render(toDrizzleWhere(where({ status: { notIn: [] } }), cols))
+		expect(none.sql).not.toMatch(/not in \(\)/)
+	})
+
 	it('returns undefined for an empty filter', () => {
 		expect(toDrizzleWhere(where({}), cols)).toBeUndefined()
 	})
