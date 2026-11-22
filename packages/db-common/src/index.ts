@@ -7,6 +7,7 @@ export {
 	buildCursor,
 	type CursorInput,
 	type CursorQuery,
+	type Keyset,
 } from './cursor.js'
 export {
 	where,
