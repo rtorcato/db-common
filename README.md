@@ -94,7 +94,7 @@ const rows = await withPage(
 ```
 
 Peer dependencies and an example for each adapter are in the
-[Drizzle adapters guide](https://docs.torcato.dev/db-common/guides/drizzle).
+[Drizzle adapters guide](https://docs.torcato.dev/db-common/docs/guides/drizzle/).
 
 ## Use with AI
 
@@ -113,7 +113,7 @@ npx skills add https://github.com/rtorcato/db-common --skill db-common
 /plugin install db-common@db-common
 ```
 
-**Other tools (Cursor, Copilot, Codex)** — the package ships an [`AGENTS.md`](AGENTS.md) with the same rules; agents that read `AGENTS.md` pick it up from `node_modules`, or copy the rules into your project's agent config.
+**Other tools (Cursor, Copilot, Codex)** — the package ships an [`AGENTS.md`](https://github.com/rtorcato/db-common/blob/main/packages/db-common/AGENTS.md) with the same rules; agents that read `AGENTS.md` pick it up from `node_modules`, or copy the rules into your project's agent config.
 
 ## Development
 

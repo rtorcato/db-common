@@ -25,7 +25,7 @@ pnpm add @rtorcato/db-drizzle drizzle-orm  # + pg for ./connection, drizzle-kit 
 | `pg`            | `^8.13.0`  | `./connection` (optional)                   |
 | `drizzle-kit`   | `^0.31.10` | `./config` (optional)                       |
 
-Full guide with an example per adapter: <https://docs.torcato.dev/db-common/guides/drizzle>.
+Full guide with an example per adapter: <https://docs.torcato.dev/db-common/docs/guides/drizzle/>.
 
 ## Adapters
 
