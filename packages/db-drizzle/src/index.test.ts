@@ -1,4 +1,12 @@
-import { cursorPaginate, onConflict, orderBy, paginate, pickMany, where } from '@rtorcato/db-common'
+import {
+	buildCursor,
+	cursorPaginate,
+	onConflict,
+	orderBy,
+	paginate,
+	pickMany,
+	where,
+} from '@rtorcato/db-common'
 import type { SQL } from 'drizzle-orm'
 import { drizzle } from 'drizzle-orm/node-postgres'
 import { PgDialect, integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
@@ -163,6 +171,17 @@ describe('toDrizzleCursor', () => {
 		expect(limit).toBe(20)
 		expect(w).toBeUndefined() // no cursor on first page
 		expect(render(ob[0]).sql).toMatch(/"users"."id" asc/)
+	})
+
+	it('maps a composite cursor to a tuple keyset where', () => {
+		const row = { name: 'Ada', id: 'abc' }
+		const after = buildCursor(row, ['name', 'id'])
+		const q = cursorPaginate({ size: 20, column: ['name', 'id'], after })
+		const { where: w, orderBy: ob } = toDrizzleCursor(q, cols)
+		const { sql, params } = render(w as SQL)
+		expect(sql).toMatch(/"users"."name" > \$1 or \("users"."name" = \$2 and "users"."id" > \$3\)/)
+		expect(params).toEqual(['Ada', 'Ada', 'abc'])
+		expect(ob).toHaveLength(2)
 	})
 })
 

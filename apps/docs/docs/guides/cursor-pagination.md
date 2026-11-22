@@ -88,10 +88,19 @@ cursorPaginate({ size: 20, column: 'id', dir: 'desc', after })
 ```
 
 :::note Non-unique columns
-`buildCursor(row, ['createdAt', 'id'])` already encodes a composite cursor, but
-`cursorPaginate()` only reads a single value today. Paging on a non-unique
-column such as `createdAt` needs that support first. Until then, keyset on a
-unique column.
+Pass an array of columns to page on a non-unique one such as `createdAt`. End it
+with a unique column to break ties, and build the cursor from the same columns:
+
+```ts
+const query = cursorPaginate({ size, column: ['createdAt', 'id'], after })
+// later pages: keyset: { cols: ['createdAt', 'id'], op: 'gt', vals: [..., ...] }
+const nextCursor = buildCursor(lastRow, ['createdAt', 'id'])
+```
+
+`where` stays empty for a composite cursor. The tuple predicate comes back as
+`keyset`, which means `c1 > v1 OR (c1 = v1 AND c2 > v2)`. `toDrizzleCursor()`
+applies it for you. On another driver, map `keyset` yourself. Every column sorts
+in `dir`.
 :::
 
 ## Combine with filters

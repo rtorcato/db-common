@@ -76,8 +76,11 @@ const next = rows.length > q.limit ? buildCursor(rows[q.limit - 1], "id") : unde
 
 - A junk or non-scalar `after` is treated as no cursor (first page); it never throws.
 - `dir: "desc"` flips the predicate to `lt`.
-- Keyset on a unique column. `cursorPaginate` emits a single-column predicate,
-  so ties on a non-unique column can skip or repeat rows.
+- Keyset on a unique column, or pass `column: ["createdAt", "id"]` and
+  `buildCursor(row, ["createdAt", "id"])` for a composite cursor. `where` stays
+  empty and the tuple predicate comes back as `keyset: { cols, op, vals }`
+  (`c1 > v1 OR (c1 = v1 AND c2 > v2)`); `toDrizzleCursor` applies it. A
+  single-column keyset on a non-unique column can skip or repeat rows.
 
 ## Write side and result mapping
 
