@@ -25,10 +25,13 @@
         "enabled": true,
         "config": "base"
       },
-      "bundler": "tsup"
+      "bundler": "none"
     },
-    "writtenBy": "@rtorcato/repo-tooling@6.0.0",
-    "writtenAt": "2026-10-12T13:28:39.562Z"
+    "assets": {
+      "changesets": "6bb0faa027424661cda0e6da62acfd482541dbf3b86e296380ef3e3fafef57c4"
+    },
+    "writtenBy": "@rtorcato/repo-tooling@6.4.0",
+    "writtenAt": "2026-11-22T17:53:37.487Z"
   },
   "rules": {
     "mcp": {
